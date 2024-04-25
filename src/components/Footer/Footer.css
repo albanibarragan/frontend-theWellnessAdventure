@@ -29,7 +29,8 @@
  }
 
 .social-icons img{
-  width: 40px;
+  float: left;
+  width: 20px;
   margin-right: 15px;
 }
  

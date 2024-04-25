@@ -1,5 +1,4 @@
 import React from 'react';
-import { ImageList, ImageListItem } from '@mui/material';
 import imageData from '../data/imageData';
 
 export const Activities = () => {

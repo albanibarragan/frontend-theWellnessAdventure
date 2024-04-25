@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import facebook_icon from './assets/facebook_icon.svg'
-import youtube_icon from './assets/youtube_icon.svg'
-import instagram_icon from './assets/instagram-icon.svg'
-import twitter_icon from './assets/twitter_icon.svg'
+import facebook_icon from  '../../assets/icons/facebook_icon.svg'
+import youtube_icon from '../../assets/icons/youtube_icon.svg'
+import instagram_icon from '../../assets/icons/instagram_icon.svg'
+import twitter_icon from '../../assets/icons/twitter_icon.svg'
 import viteLogo from '/vite.svg'
 //importamos el css
 import './Footer.css'
