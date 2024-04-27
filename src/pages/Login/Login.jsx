@@ -3,6 +3,8 @@ import './Login.css'
 import logo_site from '../../assets/fotos/logo.jpg'
 import email_icon from '../../assets/icons/email.png'
 import password_icon from '../../assets/icons/password.png'
+import GoogleLoginComponent from '../../components/button/GoogleLoginComponent.jsx'
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 export const Login = () => {
 
@@ -27,6 +29,11 @@ export const Login = () => {
         <img src = {password_icon} alt= "" />
         <input id="password" name="password"  required type="password" placeholder='Contraseña'/>
         </div> 
+        <div className="iniciarsesion-google">
+        <GoogleOAuthProvider clientId="YOUR_CLIENT_ID">  {/* Reemplaza con tu ID de cliente */}
+      <GoogleLoginComponent />
+    </GoogleOAuthProvider>
+        </div>
         {action==="Sign Up"?<div></div>: <div className= "forgot-password">Olvidaste tu Contraseña?<span>Recuperala aquí</span></div>}
         <div className= "submit-container">
         <button  type="submit"className={action==="Iniciar Sesión"?"submit gray": "submit"} onClick={()=>{setAction("Registrarse")}}>Registrarse </button>
