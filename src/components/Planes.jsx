@@ -1,7 +1,8 @@
 const Planes = () => {
   return (
     <>
-      <section class="text-white body-font">
+    <div className="planes">
+    <section class="text-white body-font">
   <div class="bg-white container px-5 py-24 mx-auto ">
     <div class=" flex flex-wrap -m-4">
       <div class="p-4 lg:w-1/3 ">
@@ -247,6 +248,8 @@ const Planes = () => {
     </div>
   </div>
 </section>
+    </div>
+ 
     </>
   )
 }
