@@ -1,6 +1,4 @@
 
-
-
  export const Navbar = () => {
   return (
 
