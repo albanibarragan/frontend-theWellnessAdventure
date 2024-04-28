@@ -4,10 +4,12 @@ import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import Login from './pages/Login/Login.jsx'
-import Table from './components/Table/Table.jsx'
+import NavbarUser from './components/Navbar/NavbarUsuario/NavbarUser.jsx'
+import Dropdown from './components/Dropdown/DropdownProfile.jsx'
+import profileData from './data/profileData.js'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-  <Table />
+  <Dropdown profileData={profileData}/>
   </BrowserRouter>
 )

@@ -1,23 +1,25 @@
-import Perfillogin from "../../pages/Login/Perfillogin";
+import Logo from '../../../assets/fotos/logo.jpg'
 import React, {useState} from "react";
 import { useNavigate, }    from "react-router-dom"
 
 
 export const NavbarUser = () => {
 
-  const [ menu, setMenu] = useState(false);
+{/**  const [ menu, setMenu] = useState(false);
 
+  
   const navigate = useNavigate();
   const onClick = ()=>{
     navigate('/Perfillogin');
 }
+**/ }
 
   return (
     <>
   <nav class="bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900">
     <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
         <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img src="src/assets/fotos/photo_5175141197897902978_x.jpg" alt="logo" class="w-85 h-20 rounded-lg" />
+        <img src={Logo} alt="logo" class="w-85 h-20 rounded-lg" />
            </a>
         <button data-collapse-toggle="mega-menu-full" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu-full" aria-expanded="false">
             <span class="sr-only">Open main menu</span>
@@ -33,6 +35,10 @@ export const NavbarUser = () => {
          
                 <li>
                     <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">PLANES</a>
+                </li>
+
+                <li>
+                    <a href="#" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700">MIS PLANES</a>
                 </li>
 
                 <li>
