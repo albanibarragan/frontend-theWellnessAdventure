@@ -12,7 +12,6 @@ const imageData = [
   { src: image4, alt: 'Imagen 4' },
   { src: image5, alt: 'Imagen 5' },
   { src: image6, alt: 'Imagen 6' },
-  // Agrega más objetos según tus necesidades
 ];
 
 export default imageData;

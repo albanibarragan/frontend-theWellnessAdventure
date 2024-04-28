@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import { useNavigate }    from "react-router-dom"
+import {Link} from "react-scroll"
 import './Navbar.css'
 import  logo from '../../assets/fotos/logo.jpg'
 const Navbar = () => {
-    const [ menu, setMenu] = useState(false);
-
     const navigate = useNavigate();
+
     const onClick = ()=>{
       navigate('/login');
   }
@@ -16,9 +16,9 @@ const Navbar = () => {
             </div>
        
         <ul className="navbar-menu">
-            <a  onClick ={() => setMenu("home")}className={menu ==="home" ? "active": ""} >Inicio</a>
-            <a onClick ={() => setMenu("activities")}className={menu ==="activities" ? "active": ""} >Actividades</a>
-            <a onClick ={() => setMenu("planes")}className={menu ==="planes" ? "active": ""}  >Planes</a>
+            <Link activeClass="active" spy={true} smooth={true} offset={50} duration={500} to="home"  >Inicio</Link>
+            <Link  activeClass="active" spy={true} smooth={true} offset={50} duration={500} to="activities" >Actividades</Link>
+            <Link  activeClass="active" spy={true} smooth={true} offset={50} duration={500} to="planes"  >Planes</Link>
         </ul>
         <div className="navbar-right">
         <a onClick={onClick} className="button-login" target="_blank" rel="noreferrer">Iniciar sesion</a>

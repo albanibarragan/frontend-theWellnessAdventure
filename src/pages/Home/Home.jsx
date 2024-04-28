@@ -1,13 +1,13 @@
 import React from 'react'
 import Footer from '../../components/Footer/Footer.jsx'
-import Activities from '../../components/Activities.jsx'
-import Planes from '../../components/Planes.jsx'
+import Activities from '../../components/GalleryActivities/Activities.jsx'
+import Planes from '../../components/planes/Planes.jsx'
 import Navbar from '../../components/Navbar/Navbar.jsx'
 import Header from '../../components/Header/Header.jsx'
 
 const Home = () => {
   return (
-    <div className="home">
+    <div className="home" id ="home">
       <Navbar />
       <Header />
       <Activities />

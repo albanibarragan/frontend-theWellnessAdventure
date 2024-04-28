@@ -1,0 +1,35 @@
+.table-plans{
+    width: 100%;
+    margin:0 auto;
+    border: 1px  #22543D;
+    border-radius: 10px;
+} 
+
+.table {
+    border-collapse: collapse; 
+    margin: 25px 0; 
+    font-size: 1rem; 
+    width:100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); 
+}
+
+.table thead tr { 
+    background-color: #22543D;  
+    text-align: middle; 
+    width: 25%;
+}
+
+.table th{ 
+    padding: 12px 15px; 
+    width: 25%; 
+    color: white;
+}
+
+.table td { 
+    padding: 12px 15px; 
+    width: 25%; 
+    text-align: center;
+    color: black;
+    border: 1px solid #ddd;
+}
+
