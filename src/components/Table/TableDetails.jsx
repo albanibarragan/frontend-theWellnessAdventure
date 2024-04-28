@@ -1,8 +1,8 @@
 import React from 'react'
-import './Table.css'
+import './TableDetails.css'
 import tablaData from '../../data/tablaData.js'
 
-const Table = () => {
+const TableDetails = () => {
   return (
     <div className='table-plans'> 
     <table class="table"> 
@@ -34,4 +34,4 @@ const Table = () => {
   )
 }
 
-export default Table
+export default TableDetails
