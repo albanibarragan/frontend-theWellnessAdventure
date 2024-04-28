@@ -1,4 +1,4 @@
-const Planes = () => {
+const PlanesDetails = () => {
   return (
     <>
     <div className="planes" id="planes">
@@ -228,4 +228,4 @@ const Planes = () => {
   )
 }
 
-export default Planes
+export default PlanesDetails
