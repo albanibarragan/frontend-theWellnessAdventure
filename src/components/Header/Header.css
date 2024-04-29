@@ -6,17 +6,20 @@
     height: 34vw;
     margin: 0 auto;
     padding-bottom: 3rem;
+  /**  background: url('../../assets/fotos/imgPrincipal.jpg');
+    color:beige;**/
 }
 .text-section1{
-    width: 90%;
+    width: 80%;
     padding-top: 2rem;
-    padding-right: 1rem;
+    padding-right: 3rem;
+    padding-left: 3rem;
 }
 
 .text-inicial{
     font-size: max(2.5vw, 22px);
     text-align: left;
-    padding-bottom: 3rem;
+    padding-bottom: 2rem;
 }
 
 .text{
@@ -33,4 +36,5 @@
     text-decoration: none;
     border-radius: 50px;
     background-color: #22543D;
+    
 }
