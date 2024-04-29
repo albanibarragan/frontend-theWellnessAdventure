@@ -1,0 +1,92 @@
+/* Estilos generales del contenedor del formulario */
+.buy-form-container {
+    width: 30%; 
+    margin: 0 auto;
+    padding: 2rem; 
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    border-width: 2px; 
+
+  }
+  
+  /* Estilos para el título del formulario */
+  .buy-form-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .buy-form-title h2 {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  
+  /* Estilos para el formulario en sí */
+  .buy-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .buy-inputs {
+    width: 90%;
+    margin: auto;
+  }
+  
+  .buy-input {
+    position: relative;
+    margin-bottom: 3rem;
+    flex-direction: column;
+    display: flex;
+  }
+
+  .buy-input :focus{
+    border: 1px solid #22543D;
+}
+  .buy-label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilos para los inputs */
+  .buy-form input[type="text"],
+  .buy-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .terms-checkbox {
+   flex-direction: row;
+    display: flex;
+    padding-bottom:1rem;
+  }
+  
+  .terms-checkbox input[type="checkbox"] {
+    margin-right: 10px;
+  }
+    
+  .terms-checkbox a {
+    color: #22543D;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .buy-form input[type="submit"] {
+    border: 1px solid #22543D;
+    color: #FFF;
+    padding: 10px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    background-color: #22543D;
+    cursor: pointer;
+  }
+  
+  .buy-form input[type="submit"]:hover {
+    background-color: #9e9e9e;
+  }
+
+.parrafo-error {
+    color: red;
+    font-size: 12px;
+  }

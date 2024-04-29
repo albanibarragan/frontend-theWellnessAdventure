@@ -1,0 +1,30 @@
+.image-card-content {
+    padding: 1rem;
+  }
+  .image-card-content {
+    padding: 1rem; 
+    border: 1px solid #ddd; 
+    border-radius: 0 0 10px 10px; 
+    background-color: #fff; 
+  }
+  
+  .image-card-title {
+    font-weight: bold;
+    margin-bottom: 0.5rem; 
+  }
+  
+  .image-description {
+    background-color: #fff; 
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); 
+  }
+  
+ 
+  .image-description p {
+    margin-bottom: 0; 
+    font-size: 0.9rem; 
+    line-height: 1.6; 
+    color: #333; 
+  }
+  
