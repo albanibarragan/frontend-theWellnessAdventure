@@ -6,6 +6,7 @@ import GoogleLoginComponent from "../../../components/button/GoogleLoginComponen
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import "./FormLogin.css";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 const FormLogin = () => {
   const [action, setAction] = useState("Iniciar sesion");
@@ -18,11 +19,18 @@ const FormLogin = () => {
   const onSubmit = (dataUser) => {
     console.log(dataUser);
   };
+
+  const navigate = useNavigate();
+
+  const onClick = () => {
+    navigate("/register");
+  };
+
   return (
     <div className="login-container-form">
       {/* header del login */}
       <div className="login-header">
-        <div className="img-container">
+        <div className="login-logo-container">
           <img src={logo_site} height={200} width={300} />
         </div>
         <div className="login-form-text-header-start">Bienvenido {action}</div>
@@ -33,41 +41,42 @@ const FormLogin = () => {
       <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="login-inputs">
           <div className="input-box">
-            <img src={email_icon} alt="" />
-            <input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Correo Electronico"
-              {...register("email", {
-                required: true,
-                pattern:
-                  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-              })}
-            />
+            <label className="login-label">Correo</label>
+            <div className="login-container-img-input">
+              <img src={email_icon} alt="" />
+              <input
+                className="login-input"
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Correo Electronico"
+                {...register("email", {
+                  required: true,
+                  pattern:
+                    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                })}
+              />
+            </div>
           </div>
           {errors.email && <p>Por favor verifica el email</p>}
           <div className="input-box">
-            <img src={password_icon} alt="" />
-            <input
-              {...register("password")}
-              id="password"
-              name="password"
-              required
-              type="password"
-              placeholder="Contraseña"
-              {...register("password", {
-                required: true,
-                pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/,
-              })}
-            />
-            {errors.password && <p>Por davor verifica la contraseña</p>}
-          </div>
-          <div className="iniciarsesion-google">
-            <GoogleOAuthProvider clientId="YOUR_CLIENT_ID">
-              {" "}
-              <GoogleLoginComponent />
-            </GoogleOAuthProvider>
+            <label className="login-label">contraseña</label>
+            <div className="login-container-img-input">
+              <img src={password_icon} alt="" />
+              <input
+                className="login-input"
+                id="password"
+                name="password"
+                required
+                type="password"
+                placeholder="Contraseña"
+                {...register("password", {
+                  required: true,
+                  pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/,
+                })}
+              />
+              {errors.password && <p>Por davor verifica la contraseña</p>}
+            </div>
           </div>
           {action === "Sign Up" ? (
             <div></div>
@@ -76,10 +85,17 @@ const FormLogin = () => {
               ¿Olvidaste tu Contraseña?<span>Recuperala aquí</span>
             </div>
           )}
-          <div className="submit-container">
+          <div className="submit-container-login">
+            <div className="iniciarsesion-google">
+              <GoogleOAuthProvider clientId="YOUR_CLIENT_ID">
+                {" "}
+                <GoogleLoginComponent />
+              </GoogleOAuthProvider>
+            </div>
             <button
               className="button-registrarse"
               target="_blank"
+              onClick={onClick}
               rel="noreferrer"
             >
               Registrarse{" "}

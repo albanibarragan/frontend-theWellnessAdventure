@@ -11,6 +11,9 @@ const Principal = () => {
       <Navbar />
       <Header />
       <Activities />
+      <div className="plan-bienestar">
+        <h1>Planes de bienestar que tenemos para ti</h1>
+      </div>
       <PlanesDetails />
       <Footer />
     </div>

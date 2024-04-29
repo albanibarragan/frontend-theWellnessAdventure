@@ -1,0 +1,134 @@
+.register-container-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    width: 500;
+    background: #e9e9e9;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  
+  .register-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    margin-top: 30px;
+  }
+  
+  .register-logo-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+    
+  .register-form-text-header-start{
+    font-size: 1.5rem;
+    font-weight: bolder;
+  }
+  
+.register-form{
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input-box-register{
+    position: relative;
+    margin-bottom: 2.5rem;
+}  
+ 
+.register-input {
+        width: 100%;
+        font-size: 1rem;
+        border: 1px solid black;
+        outline: none;
+        padding: 0.25rem 0.5rem 0.5rem 0;
+        border-radius: 5px;
+        padding: 1rem .5rem;
+  }
+
+.register-input:focus{
+    border: 1px solid #3DA6FB;
+}
+  
+.register-container-img-input{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+/* Estilos generales para el contenedor de términos */
+.terms-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Estilos para el contenedor del checkbox y la etiqueta */
+.check-terms {
+  display: flex; /* Permite que los elementos se coloquen en fila */
+  align-items: center; /* Alinea los elementos verticalmente en el centro */
+}
+
+/* Estilos para la casilla de verificación */
+#terms {
+  width: 15px; /* Establecer el ancho deseado */
+  height: 15px; /* Establecer la altura deseada */
+  border: 1px solid #ccc; /* Agregar un borde para definir el checkbox */
+  margin-right: 5px;
+}
+
+
+/* Estilos para la etiqueta */
+label[for="terms"] {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Estilos para el enlace */
+.terms-container a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.login-form{
+    padding-left: 62px;
+    margin-top: 27px;
+    color: #797979;
+    font-size: 18px;
+}
+
+.login-form a{
+    color: #007954;
+    cursor: pointer;
+}
+  
+.submit-container-register{
+    display: grid;
+    gap: 30px;
+    margin: 60px auto;
+ }
+
+.button-register {
+    background-color: #007954;
+    cursor: pointer;
+    border-width: 0;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+    border-radius: 10px;
+    gap: 15px;
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: #FFFFFF;
+  }
+  
+  .errors {
+    color: rgba(207, 74, 13, 0.8);
+    font-size: 1rem; 
+}

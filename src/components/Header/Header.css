@@ -6,8 +6,7 @@
     height: 34vw;
     margin: 0 auto;
     padding-bottom: 3rem;
-    background: url('../../assets/fotos/imgPrincipal.jpg');
-    color:beige;
+    
 }
 .text-section1{
     width: 80%;
@@ -36,5 +35,6 @@
     text-decoration: none;
     border-radius: 50px;
     background-color: #22543D;
+    cursor: pointer;
     
 }

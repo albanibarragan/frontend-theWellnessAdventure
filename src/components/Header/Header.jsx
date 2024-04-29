@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Header.css";
+import image from "../../assets/fotos/imgPrincipal.jpg";
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const onClick = () => {
+    navigate("/register");
+  };
   return (
     <div className="header">
+      <div className="img-container">
+        <img src={image} alt="" />
+      </div>
       <div className="header-content">
         <div className="text-section1">
           <div className="title">
@@ -22,7 +31,12 @@ const Header = () => {
               </p>
             </div>
           </div>
-          <a className="button1" target="_blank" rel="noreferrer">
+          <a
+            className="button1"
+            onClick={onClick}
+            target="_blank"
+            rel="noreferrer"
+          >
             Registrate Ahora
           </a>
         </div>
