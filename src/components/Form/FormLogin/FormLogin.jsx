@@ -40,13 +40,13 @@ const FormLogin = () => {
               type="email"
               placeholder="Correo Electronico"
               {...register("email", {
-                pattern: /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                required: true,
+                pattern:
+                  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
               })}
             />
-            {errors.email?.type === "pattern" && (
-              <p>El formato del email no es correcto</p>
-            )}
           </div>
+          {errors.email && <p>Por favor verifica el email</p>}
           <div className="input-box">
             <img src={password_icon} alt="" />
             <input
@@ -56,7 +56,12 @@ const FormLogin = () => {
               required
               type="password"
               placeholder="Contraseña"
+              {...register("password", {
+                required: true,
+                pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/,
+              })}
             />
+            {errors.password && <p>Por davor verifica la contraseña</p>}
           </div>
           <div className="iniciarsesion-google">
             <GoogleOAuthProvider clientId="YOUR_CLIENT_ID">
@@ -68,7 +73,7 @@ const FormLogin = () => {
             <div></div>
           ) : (
             <div className="forgot-password">
-              Olvidaste tu Contraseña?<span>Recuperala aquí</span>
+              ¿Olvidaste tu Contraseña?<span>Recuperala aquí</span>
             </div>
           )}
           <div className="submit-container">

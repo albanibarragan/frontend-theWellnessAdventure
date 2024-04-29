@@ -35,7 +35,7 @@ const BuyForm = () => {
           <div className="buy-input">
             <label>Elige un plan de retiro de bienestar</label>
             <select
-              {...register("plan-retiro")}
+              {...register("planRetiro")}
               onChange={(event) => console.log(event.target.value)}
             >
               {plans.map((plan) => (
