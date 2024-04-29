@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Login from "./pages/Login/Login.jsx";
 import "./index.css";
 import Principal from "./pages/main/Principal.jsx";
+import Login from "./pages/Login/Login.jsx";
 
 const App = () => {
   return (
@@ -10,7 +10,6 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Principal />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/home" element={<Home />} />
       </Routes>
     </div>
   );

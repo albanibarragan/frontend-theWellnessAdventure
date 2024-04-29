@@ -6,8 +6,8 @@
     height: 34vw;
     margin: 0 auto;
     padding-bottom: 3rem;
-  /**  background: url('../../assets/fotos/imgPrincipal.jpg');
-    color:beige;**/
+    background: url('../../assets/fotos/imgPrincipal.jpg');
+    color:beige;
 }
 .text-section1{
     width: 80%;

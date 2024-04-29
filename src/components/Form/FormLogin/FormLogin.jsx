@@ -18,10 +18,6 @@ const FormLogin = () => {
   const onSubmit = (dataUser) => {
     console.log(dataUser);
   };
-
-  const onClick = () => {
-    navigate("/");
-  };
   return (
     <div className="login-container-form">
       {/* header del login */}
@@ -77,7 +73,6 @@ const FormLogin = () => {
           )}
           <div className="submit-container">
             <button
-              onClick={onClick}
               className="button-registrarse"
               target="_blank"
               rel="noreferrer"

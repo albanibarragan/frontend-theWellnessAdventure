@@ -3,12 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "./Header.css";
 
 const Header = () => {
-  const navigate = useNavigate();
-
-  const onClick = () => {
-    navigate("/Register");
-  };
-
   return (
     <div className="header">
       <div className="header-content">
