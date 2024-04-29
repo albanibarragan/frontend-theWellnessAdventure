@@ -1,5 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import plansData from "../../../data/plansData.js";
+import "./CancelForm.css";
 
 const CancelForm = () => {
   const {
@@ -12,73 +14,75 @@ const CancelForm = () => {
     console.log(data);
   };
 
-  const plans = [
-    { value: "plan-1", label: "Plan Inicial" },
-    { value: "plan-2", label: "Pro Plan Inicial" },
-    { value: "bienestar-esencial", label: "Plan Inicial Bienestar Esencial" },
-    { value: "plan-3", label: "Plan Plus" },
-    { value: "plan-4", label: "Plan Premium" },
-  ];
+  const validatePlan = (value) => {
+    if (value === "default") {
+      return "Por favor, seleccione un plan diferente al predeterminado.";
+    }
+    return true;
+  };
 
   return (
-    <div className="cancel-form">
+    <div className="cancel-form-container">
       <div className="cancel-form-title">
         <h2>Cancelar Plan de bienestar</h2>
       </div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="cancel-form">
         <div className="cancel-inputs">
           <div className="cancel-input">
             <label>Nombre completo</label>
             <input
               type="text"
-              {...register("nombre", { required: true, maxLength: 10 })}
+              {...register("nombre", {
+                required: true,
+                maxLength: 100,
+                pattern: /^[a-zA-ZÀ-ÿ\s]+$/, // Allow letters, spaces, and accented characters
+              })}
               placeholder="Ingrese su nombre"
             />
-            {errors.nombre && <p>Por favor verifique el nombre completo</p>}
+            {errors.nombre && <p>Por favor ingrese un nombre válido.</p>}
           </div>
           <div className="cancel-input">
             <label>Correo</label>
             <input
-              id="email"
-              name="email"
               type="email"
-              placeholder="Correo Electronico"
               {...register("email", {
                 required: true,
-                pattern:
-                  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
               })}
+              placeholder="Correo Electronico"
             />
-            {errors.email && <p>Por favor verificar el email</p>}
+            {errors.email && (
+              <p>Por favor ingrese un correo electrónico válido.</p>
+            )}
           </div>
-
           <div className="cancel-input">
-            <label>Elige el plan de retiro de bienestar a cancelar</label>
+            <label className="buy-label">
+              Elige un plan de retiro de bienestar que quieres cancelar
+            </label>
             <select
-              {...register("planRetiro")}
+              {...register("planRetiro", {
+                required: true,
+                validate: validatePlan,
+              })}
               onChange={(event) => console.log(event.target.value)}
             >
-              {plans.map((plan) => (
+              <option value="default">Seleccionar plan</option>
+              {plansData.map((plan) => (
                 <option key={plan.value} value={plan.value}>
                   {plan.label}
                 </option>
               ))}
             </select>
-            <input />
+            {errors.planRetiro && <p>{errors.planRetiro.message}</p>}
           </div>
           <div className="cancel-input">
             <label>Observaciones de cancelación de plan</label>
-            <input
-              type="text"
-              {...register("observacion", {
-                maxLength: 1000,
-                required: true,
-              })}
+            <textarea
+              {...register("observacion", { required: true, maxLength: 1000 })}
               placeholder="Ingrese sus observaciones personales"
-              required
             />
+            {errors.observacion && <p>Por favor ingrese sus observaciones.</p>}
           </div>
-          {errors.observacion && <p>Por favor verifique</p>}
         </div>
         <input type="submit" value="Enviar" />
       </form>

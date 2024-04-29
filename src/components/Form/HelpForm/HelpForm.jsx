@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import "./HelpForm.css";
 
 const HelpForm = () => {
   const {
@@ -13,23 +14,27 @@ const HelpForm = () => {
   };
 
   return (
-    <div className="help-form">
+    <div className="help-form-container">
       <div className="help-form-title">
         <h2>Formulario de ayuda</h2>
       </div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="help-form">
         <div className="help-inputs">
           <div className="help-input">
-            <label>Nombre completo</label>
+            <label className="help-label">Nombre completo</label>
             <input
               type="text"
-              {...register("nombre", { required: true, maxLength: 10 })}
+              {...register("nombre", {
+                required: true,
+                maxLength: 100,
+                pattern: /^[a-zA-ZÀ-ÿ\s]+$/,
+              })}
               placeholder="Ingrese su nombre"
             />
-            {errors.nombre && <p>Por favor verifique el nombre completo</p>}
+            {errors.nombre && <p>Por favor ingrese un nombre válido.</p>}
           </div>
           <div className="help-input">
-            <label>Correo</label>
+            <label className="help-label">Correo</label>
             <input
               id="email"
               name="email"
@@ -44,15 +49,15 @@ const HelpForm = () => {
             {errors.email && <p>Por favor verificar el email</p>}
           </div>
           <div className="help-input">
-            <label>Su duda: </label>
+            <label className="help-label">Su duda: </label>
             <input
+              className="duda"
               type="text"
               {...register("duda", {
                 maxLength: 1000,
                 required: true,
               })}
               placeholder="Ingrese sus observaciones personales"
-              required
             />
           </div>
           {errors.duda && <p>Por favor verifique</p>}
