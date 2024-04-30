@@ -24,3 +24,5 @@ NavbarHome
 *.njsproj
 *.sln
 *.sw?
+
+.env
