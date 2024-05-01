@@ -1,16 +1,25 @@
-import { useForm } from "react-hook-form";
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import "./PaymentForm.css";
+import { useRegFormContext } from "../../../providers/RegFormProvider.jsx";
+import { useNavigate } from "react-router-dom";
 
 const PaymentForm = () => {
+  const [, dispatch] = useRegFormContext();
+  const navigate = useNavigate();
   const {
     register,
-    formState: { errors },
+    formState: { errors, isValid },
     handleSubmit,
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log("Pago:", data);
+  const onSubmit = (values) => {
+    if (isValid) {
+      dispatch({ type: "SET_PAYMENT_DATA", data: values });
+    }
+  };
+  const onClick = () => {
+    navigate("/paymentDetails");
   };
 
   const [paymentMethod, setPaymentMethod] = useState("");
@@ -107,12 +116,19 @@ const PaymentForm = () => {
                     maxLength: 3,
                   })}
                 />
-                 {errors.cvv && <p>Por favor ingrese un CVV válido de 3 dígitos.</p>}
+                {errors.cvv && (
+                  <p>Por favor ingrese un CVV válido de 3 dígitos.</p>
+                )}
               </div>
             </div>
           )}
         </div>
-        <input type="submit" className="button-payment" value="Enviar" />
+        <input
+          type="submit"
+          className="button-payment"
+          value="Enviar"
+          onClick={onClick}
+        />
       </form>
     </div>
   );
