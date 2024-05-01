@@ -50,10 +50,16 @@ const BuyForm = () => {
               })}
               onChange={(event) => console.log(event.target.value)}
             >
-              <option value="default">Seleccionar plan</option>
+              <option className="opcion-plan" value="default">
+                Seleccionar plan
+              </option>
               {plansData.map((plan) => (
-                <option key={plan.value} value={plan.value}>
-                  {plan.label}
+                <option
+                  className="opcion-plan"
+                  key={plan.value}
+                  value={plan.value}
+                >
+                  {plan.planName}
                 </option>
               ))}
             </select>
