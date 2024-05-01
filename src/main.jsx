@@ -3,11 +3,10 @@ import ReactDOM from "react-dom";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
-import PaymentForm from "./components/Form/PaymentForm/PaymentForm.jsx";
-import HelpForm from "./components/Form/HelpForm/HelpForm.jsx";
+import Home from "./pages/Home/Home.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <PaymentForm />
+    <App />
   </BrowserRouter>
 );

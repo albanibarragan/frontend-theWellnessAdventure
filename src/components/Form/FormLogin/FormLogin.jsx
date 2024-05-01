@@ -22,8 +22,16 @@ const FormLogin = () => {
 
   const navigate = useNavigate();
 
-  const onClick = () => {
+  const handleRegisterClick = () => {
     navigate("/register");
+  };
+
+  const handleLoginClick = () => {
+    navigate("/home");
+  };
+
+  const onClick = () => {
+    action === "Registrarse" ? handleRegisterClick() : handleLoginClick();
   };
 
   return (
@@ -95,7 +103,7 @@ const FormLogin = () => {
             <button
               className="button-registrarse"
               target="_blank"
-              onClick={onClick}
+              onClick={handleRegisterClick}
               rel="noreferrer"
             >
               Registrarse{" "}
@@ -103,9 +111,7 @@ const FormLogin = () => {
             <button
               type="submit"
               className={action === "Registrarse" ? "submit gray" : "submit"}
-              onClick={() => {
-                setAction("Iniciar Sesión");
-              }}
+              onClick={handleLoginClick}
             >
               Iniciar Sesión
             </button>
