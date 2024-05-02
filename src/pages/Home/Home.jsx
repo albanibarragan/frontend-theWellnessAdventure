@@ -26,7 +26,8 @@ useEffect(()=>{
     })
   } 
 
-},[])
+  console.log(user)
+},[user])
   
 
   return (
@@ -34,7 +35,7 @@ useEffect(()=>{
       <ContainerHome>
         <div className="home-container">
           <div className="left-section">
-            <h2 className="title-section">¡Bienvenido, {userName}!</h2>
+            <h2 className="title-section">¡Bienvenido, {user?.Nombre}!</h2>
             {hasActivePlan ? (
               <div className="plans-section-home">
                 <p className="title-plan-section">
