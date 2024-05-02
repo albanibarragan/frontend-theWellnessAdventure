@@ -86,6 +86,7 @@ console.log(error)
                 })}
               />
             </div>
+            {errors.nombre && <p>Por favor verifique el nombre</p>}
           </div>
           <div className="input-box-register">
             <label className="register-label">Apellido</label>
@@ -95,8 +96,13 @@ console.log(error)
                 className="register-input"
                 type="text"
                 placeholder="Apellido"
+                {...register("apellido", {
+                  required: true,
+                  maxLength: 20,
+                })}
               />
             </div>
+            {errors.apellido && <p>Por favor verifique el apellido</p>}
           </div>
           <div className="input-box-register">
             <label className="register-label">Correo</label>

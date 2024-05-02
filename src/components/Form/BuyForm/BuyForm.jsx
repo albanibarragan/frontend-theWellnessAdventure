@@ -2,21 +2,28 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import plansData from "../../../data/plansData.js";
 import "./BuyForm.css";
+import { useRegFormContext } from "../../../providers/RegFormProvider.jsx";
+import { useNavigate } from "react-router-dom";
 
 const BuyForm = () => {
+  const [, dispatch] = useRegFormContext();
+  const navigate = useNavigate();
+
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm({
-    defaultValues: {
-      salud: "alergia",
-      sugerencias: "Quiero instructor personalizado",
-    },
-  });
+    formState: { isValid },
+  } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = (values) => {
+    if (isValid) {
+      dispatch({ type: "SET_BUY_DATA", data: values });
+    }
+  };
+
+  const onClick = () => {
+    navigate("/payment");
   };
 
   const validatePlan = (value) => {
@@ -37,16 +44,22 @@ const BuyForm = () => {
               Elige un plan de retiro de bienestar
             </label>
             <select
-              {...register("planRetiro", {
+              {...register("plan", {
                 required: true,
                 validate: validatePlan,
               })}
               onChange={(event) => console.log(event.target.value)}
             >
-              <option value="default">Seleccionar plan</option>
+              <option className="opcion-plan" value="default">
+                Seleccionar plan
+              </option>
               {plansData.map((plan) => (
-                <option key={plan.value} value={plan.value}>
-                  {plan.label}
+                <option
+                  className="opcion-plan"
+                  key={plan.value}
+                  value={plan.value}
+                >
+                  {plan.planName}
                 </option>
               ))}
             </select>
@@ -102,7 +115,7 @@ const BuyForm = () => {
             Leer términos y condiciones
           </a>
         </div>
-        <input type="submit" value="continuar" />
+        <input type="submit" value="continuar " onClick={onClick} />
       </form>
     </div>
   );
