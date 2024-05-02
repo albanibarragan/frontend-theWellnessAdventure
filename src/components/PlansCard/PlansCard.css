@@ -29,15 +29,14 @@
     grid-gap: 20px; 
   }
   
-  /* Individual plan card */
   .plan-card {
     background-color: #22543D;
     padding: 5rem;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: all 0.2s ease-in-out;
-    flex-basis: 100%; /* Fill available width */
-    margin: 0; /* Remove margin */
+    flex-basis: 100%; 
+    margin: 0; 
   }
   
   .plan-card:hover {
@@ -57,7 +56,7 @@
   }
 
   .plan-info {
-    margin-bottom: 2.5rem; /* Add space below plan info */
+    margin-bottom: 2.5rem;
   }
   
   .plan-cost {
@@ -90,9 +89,9 @@
     border-radius: 50px;
     background-color:#FFF;
     cursor: pointer;
-    font-size: 1.2rem; /* Increased button font size */
-    display: block; /* Make button a block element */
-    margin-top: 1.5rem; /* Add space above button */
+    font-size: 1.2rem; 
+    display: block; 
+    margin-top: 1.5rem; 
     color: #000;
   }
   

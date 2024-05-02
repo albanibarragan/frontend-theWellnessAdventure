@@ -17,7 +17,7 @@ const Navbar = () => {
 
       <ul className="navbar-menu">
         <Link
-          activeClass="active"
+
           spy={true}
           smooth={true}
           offset={50}

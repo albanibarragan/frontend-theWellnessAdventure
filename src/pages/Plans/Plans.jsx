@@ -3,6 +3,7 @@ import "./Plans.css";
 import ContainerHome from "../../components/containerHome/containerHome.jsx";
 import ActivitiesDetails from "../../components/GalleryActivitiesDetails/ActivitiesDetails.jsx"
 import PlansCard from "../../components/PlansCard/PlansCard.jsx";
+
 const Plans = () => {
   return (
     <div className="plans-page">

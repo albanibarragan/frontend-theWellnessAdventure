@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './PlansCard.css';
 import plansData from '../../data/plansData';
 import { VscArrowSmallRight } from "react-icons/vsc";
 import { VscCheck } from "react-icons/vsc";
+import CardDetails from '../Card/CardDetails/CardDetails';
+
 
 const PlansCard = () => {
+    const [showModal, setShowModal] = useState(false);
+    const [selectedPlan, setSelectedPlan] = useState(null); // Track selected plan
+
+    const handleShowModal = (plan) => { // Pass plan data to modal
+        setSelectedPlan(plan);
+        setShowModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+        setSelectedPlan(null); // Reset selected plan on close
+    };
+
     return (
         <div className="planes" id="planes">
 
@@ -40,13 +55,21 @@ const PlansCard = () => {
                                     <p className="plan-start-date">
                                         Inicio de plan: {plan.startDate}
                                     </p>
-                                    <button className="view-more-button">Más información <VscArrowSmallRight /></button>
+                                    <button
+                                        className="view-more-button"
+                                        onClick={() => handleShowModal(plan)} // Pass plan data
+                                    >
+                                        Más información <VscArrowSmallRight />
+                                    </button>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </section>
             </div>
+            {showModal && selectedPlan && (  // Render modal only if open and data exists
+                <CardDetails plan={selectedPlan} onClose={handleCloseModal} />
+            )}
         </div>
     );
 };
