@@ -29,33 +29,33 @@ const RegisterForm = () => {
   };
 
 
-  const onSubmit = async(dataUser) => {
+  const onSubmit = async (dataUser) => {
     const { data, error } = await supabaseClient.auth.signUp({
       email: dataUser.email,
       password: dataUser.password,
     })
-    if(error){
-console.log(error)
-    return
-  }
-  console.log("Server Response: " + data);
-  const new_user={
-    id_user: data.user.id,
-    Cedula: dataUser.Cedula,
-    Nombre: dataUser.Nombre,
-    Correo: dataUser.email,
-    Direccion: dataUser.direccion,
-    Necesidades_Medicas: dataUser.salud
-    
-  }
-  console.log("ID:" + data.user.id)
-  console.log("RequestBody: " + new_user)
-  const { error_al_crear } = await supabaseClient.from('users')
-  .insert(new_user)
-  if(error_al_crear){
-    console.log(error_al_crear)
-        return
-      }
+    if (error) {
+      console.log(error)
+      return
+    }
+    console.log("Server Response: " + data);
+    const new_user = {
+      id_user: data.user.id,
+      Cedula: dataUser.Cedula,
+      Nombre: dataUser.Nombre,
+      Correo: dataUser.email,
+      Direccion: dataUser.direccion,
+      Necesidades_Medicas: dataUser.salud
+
+    }
+    console.log("ID:" + data.user.id)
+    console.log("RequestBody: " + new_user)
+    const { error_al_crear } = await supabaseClient.from('users')
+      .insert(new_user)
+    if (error_al_crear) {
+      console.log(error_al_crear)
+      return
+    }
 
     navigate("/login")
   };
@@ -81,7 +81,7 @@ console.log(error)
                 className="register-input"
                 type="text"
                 placeholder="Nombre"
-                {...register("Nombre", {
+                {...register("nombre", {
                   required: true,
                   maxLength: 20,
                 })}
@@ -132,9 +132,15 @@ console.log(error)
                 className="register-input"
                 type="text"
                 placeholder="Telefono (Principal)"
+                {...register('phone', {
+                  required: true,
+                  pattern: /^\d{10}$/,
+                })}
               />
             </div>
+
           </div>
+          {errors.phone && <p>Por favor verifique el apellido</p>}
           <div className="input-box-register">
             <label className="register-label">Teléfono(De Emergencia)</label>
             <div className="register-container-img-input">
@@ -143,6 +149,10 @@ console.log(error)
                 className="register-input"
                 type="text"
                 placeholder="Telefono (De Emergencia)"
+                {...register('phoneEmergencia', {
+                  required: true,
+                  pattern: /^\d{10}$/,
+                })}
               />
             </div>
           </div>
@@ -154,12 +164,13 @@ console.log(error)
                 className="register-input"
                 type="text"
                 placeholder="cedula"
-                {...register("Cedula", {
+                {...register("cedula", {
                   required: true,
                   maxLength: 20,
                 })}
               />
             </div>
+            {errors.cedula && <span className="error">Verifique la cédula ingresada</span>}
           </div>
           <div className="input-box-register">
             <div className="input-box">
@@ -188,13 +199,14 @@ console.log(error)
                 className="register-input"
                 type="text"
                 placeholder="Direccion"
-                {...register("direccion", {
+                {...register("address", {
                   required: true,
                   maxLength: 20,
                 })}
               />
             </div>
           </div>
+          {errors.address && <p>Por favor verifique el apellido</p>}
           <div className="input-box-register">
             <label className="register-label">Contraseña</label>
             <div className="register-container-img-input">

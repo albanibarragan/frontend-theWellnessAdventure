@@ -50,7 +50,7 @@ const BuyForm = () => {
   return (
     <div className="buy-form-container">
       <div className="buy-form-title">
-        <h2>Comprar Plan</h2>
+        <h2>Ristro a Plan de retiro</h2>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="buy-form">
         <div className="buy-inputs">
