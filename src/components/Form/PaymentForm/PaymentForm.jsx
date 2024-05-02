@@ -5,7 +5,7 @@ import { useRegFormContext } from "../../../providers/RegFormProvider.jsx";
 import { useNavigate } from "react-router-dom";
 
 const PaymentForm = () => {
-  const [, dispatch] = useRegFormContext();
+  const [state, dispatch] = useRegFormContext();
   const navigate = useNavigate();
   const {
     register,
@@ -14,14 +14,12 @@ const PaymentForm = () => {
   } = useForm();
 
   const onSubmit = (values) => {
+    console.log(values);
     if (isValid) {
       dispatch({ type: "SET_PAYMENT_DATA", data: values });
+      navigate("/paymentDetails");
     }
   };
-  const onClick = () => {
-    navigate("/paymentDetails");
-  };
-
   const [paymentMethod, setPaymentMethod] = useState("");
 
   return (
@@ -123,12 +121,7 @@ const PaymentForm = () => {
             </div>
           )}
         </div>
-        <input
-          type="submit"
-          className="button-payment"
-          value="Enviar"
-          onClick={onClick}
-        />
+        <input type="submit" className="button-payment" value="Enviar" />
       </form>
     </div>
   );

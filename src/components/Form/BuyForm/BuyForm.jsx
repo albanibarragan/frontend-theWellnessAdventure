@@ -17,12 +17,6 @@ const BuyForm = () => {
   } = useForm();
 
   const onSubmit = (values) => {
-    if (isValid) {
-      dispatch({ type: "SET_BUY_DATA", data: values });
-    }
-  };
-
-  const onClick = () => {
     navigate("/payment");
   };
 
@@ -115,7 +109,7 @@ const BuyForm = () => {
             Leer términos y condiciones
           </a>
         </div>
-        <input type="submit" value="continuar " onClick={onClick} />
+        <input type="submit" value="continuar " />
       </form>
     </div>
   );

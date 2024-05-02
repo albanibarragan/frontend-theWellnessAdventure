@@ -5,15 +5,15 @@ import RegProviders from "../../providers/RegFormProvider";
 
 const PaymentPage = () => {
   return (
-    <RegProviders>
-      <div className="payment-page">
-        <ContainerHome>
+    <div className="payment-page">
+      <ContainerHome>
+        <RegProviders>
           <div className="payment-page-container">
             <PaymentForm />
           </div>
-        </ContainerHome>
-      </div>
-    </RegProviders>
+        </RegProviders>
+      </ContainerHome>
+    </div>
   );
 };
 
