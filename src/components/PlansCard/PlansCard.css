@@ -29,18 +29,18 @@
     grid-gap: 20px; 
   }
   
-  .plan-card {
+  .plans-card {
     background-color: #22543D;
     padding: 5rem;
+    transition: all 0.5s ease-in-out;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease-in-out;
-    flex-basis: 100%; 
     margin: 0; 
   }
   
-  .plan-card:hover {
+  .plans-card:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
   }
   
   .card-content {
@@ -93,7 +93,7 @@
     margin-top: 1.5rem; 
     color: #000;
   }
-  svg{
+  .svg{
     display:inline;
   }
   .view-more-button:hover {

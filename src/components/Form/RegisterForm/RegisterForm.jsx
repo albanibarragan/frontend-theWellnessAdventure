@@ -132,7 +132,21 @@ const RegisterForm = () => {
               />
             </div>
           </div>
-
+          <div className="input-box-register">
+            <div className="input-box">
+              <label htmlFor="dateBirthday" className="register-label">Fecha de Nacimiento</label>
+              <div className="register-container-img-input">
+                <input
+                  {...register('dateOfBirth', {
+                    required: true,
+                  })}
+                  id="dateBirthday"
+                  name="dateBirthday"
+                  type="date"
+                />
+              </div>
+            </div>
+          </div>
           <div className="input-box-register">
             <label className="register-label">Dirección</label>
             <div className="register-container-img-input">
@@ -265,8 +279,8 @@ const RegisterForm = () => {
             </button>
           </div>
         </div>
-      </form>
-    </div>
+      </form >
+    </div >
   );
 };
 

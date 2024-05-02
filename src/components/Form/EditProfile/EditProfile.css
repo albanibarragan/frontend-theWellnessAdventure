@@ -37,7 +37,6 @@
 
 }
 
-
 .editProfile{
     width: 100%;
     flex-direction: row;
@@ -47,7 +46,7 @@
 
 .profile-input {
     width: 100%;
-    font-family: "Poppins", sans-serif;
+
     font-size: 1rem;
     border: 1px solid #7e7d7d;
     outline: none;

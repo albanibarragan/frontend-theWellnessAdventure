@@ -83,7 +83,6 @@ const EditProfile = () => {
                                 type="email"
                                 placeholder="Correo Electronico"
                                 {...register("email", {
-                                    required: true,
                                     pattern:
                                         /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                                 })}
@@ -93,9 +92,7 @@ const EditProfile = () => {
                         <div className="input-box">
                             <label htmlFor="dateBirthday" className="profile-label">Fecha de Nacimiento</label>
                             <input
-                                {...register('dateOfBirth', {
-                                    required: true,
-                                })}
+                                {...register('dateOfBirth')}
                                 id="dateBirthday"
                                 name="dateBirthday"
                                 type="date"

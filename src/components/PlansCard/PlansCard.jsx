@@ -34,7 +34,7 @@ const PlansCard = () => {
                 <section className="text-white body-font">
                     <div className="card-grid">
                         {plansData.map((plan) => (
-                            <div className="plan-card" key={plan.id}>
+                            <div className="plans-card" key={plan.id}>
                                 <div className="card-content">
                                     <h2 className="card-title">{plan.planName}</h2>
                                     <hr />
