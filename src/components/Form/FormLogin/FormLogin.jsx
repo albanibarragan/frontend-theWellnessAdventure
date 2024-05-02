@@ -37,10 +37,7 @@ const FormLogin = () => {
     navigate("/")
   };
 
-  const handleLoginClick = () => {
-    navigate("/home");
-  };
-
+ 
   const onClick = () => {
     action === "Registrarse" ? handleRegisterClick() : handleLoginClick();
 
@@ -123,7 +120,7 @@ const FormLogin = () => {
             <button
               type="submit"
               className={action === "Registrarse" ? "submit gray" : "submit"}
-              onClick={handleLoginClick}
+          
             >
               Iniciar Sesión
             </button>
