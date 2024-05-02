@@ -52,9 +52,7 @@ const PlansCard = () => {
                                         </ul>
 
                                     </div>
-                                    <p className="plan-start-date">
-                                        Inicio de plan: {plan.startDate}
-                                    </p>
+
                                     <button
                                         className="view-more-button"
                                         onClick={() => handleShowCard(plan)}
