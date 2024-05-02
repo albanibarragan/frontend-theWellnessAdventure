@@ -38,9 +38,9 @@ const RegisterForm = () => {
 console.log(error)
     return
   }
-    console.log(data);
-  console.log(dataUser);
+  console.log("Server Response: " + data);
   const new_user={
+    id_user: data.user.id,
     Cedula: dataUser.Cedula,
     Nombre: dataUser.Nombre,
     Correo: dataUser.email,
@@ -48,7 +48,8 @@ console.log(error)
     Necesidades_Medicas: dataUser.salud
     
   }
-
+  console.log("ID:" + data.user.id)
+  console.log("RequestBody: " + new_user)
   const { error_al_crear } = await supabaseClient.from('users')
   .insert(new_user)
   if(error_al_crear){

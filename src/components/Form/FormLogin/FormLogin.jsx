@@ -32,9 +32,9 @@ const FormLogin = () => {
     }
     const now= new Date();
     const experationTime= now.getTime() + data.session.expires_in * 1000;
-    const sesion={token:data.session.access_token,expiration:experationTime}
+    const sesion={token:data.session.access_token,expiration:experationTime, email: data.user.email}
     sessionStorage.setItem("Sesion", JSON.stringify(sesion))
-    navigate("/")
+    navigate("/home")
   };
 
  
