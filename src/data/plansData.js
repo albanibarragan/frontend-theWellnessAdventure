@@ -10,6 +10,7 @@ const plansData = [
       amount: 15,
       paymentFrequency: "mensual", // Add payment frequency
     },
+  
     description: "Plan de retiro de bienestar para adultos mayores que incluye las siguientes actividades:",
     activities: ["Yoga", "Tai Chi", "Paseos al aire libre"],
     benefits: [
@@ -17,6 +18,7 @@ const plansData = [
       "Estimula la coordinación y el equilibrio",
       "Fomenta una alimentación saludable y socialización",
     ],
+    
   },
   {
     id: 2,

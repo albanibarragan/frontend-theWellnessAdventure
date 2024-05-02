@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './PlansCard.css';
 import plansData from '../../data/plansData';
 import { VscArrowSmallRight } from "react-icons/vsc";
 import { VscCheck } from "react-icons/vsc";
+import CardDetails from '../Card/CardDetails/CardDetails';
+
 
 const PlansCard = () => {
+    const [showCard, setShowCard] = useState(false);
+    const [selectedPlan, setSelectedPlan] = useState(null); // Track selected plan
+
+    const handleShowCard = (plan) => {
+        setSelectedPlan(plan);
+        setShowCard(true);
+    };
+
+    const handleCloseCard = () => {
+        setShowCard(false);
+        setSelectedPlan(null);
+    };
+
     return (
         <div className="planes" id="planes">
 
@@ -19,7 +34,7 @@ const PlansCard = () => {
                 <section className="text-white body-font">
                     <div className="card-grid">
                         {plansData.map((plan) => (
-                            <div className="plan-card" key={plan.id}>
+                            <div className="plans-card" key={plan.id}>
                                 <div className="card-content">
                                     <h2 className="card-title">{plan.planName}</h2>
                                     <hr />
@@ -37,16 +52,22 @@ const PlansCard = () => {
                                         </ul>
 
                                     </div>
-                                    <p className="plan-start-date">
-                                        Inicio de plan: {plan.startDate}
-                                    </p>
-                                    <button className="view-more-button">Más información <VscArrowSmallRight /></button>
+
+                                    <button
+                                        className="view-more-button"
+                                        onClick={() => handleShowCard(plan)}
+                                    >
+                                        Más información <VscArrowSmallRight />
+                                    </button>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </section>
             </div>
+            {showCard && selectedPlan && (
+                <CardDetails plan={selectedPlan} onClose={handleCloseCard} />
+            )}
         </div>
     );
 };

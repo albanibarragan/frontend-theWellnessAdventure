@@ -1,0 +1,32 @@
+.retiro-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80vh;
+    width: 100%;
+    background-color: #fff9eb;
+  }
+
+  .left-section-retiro {
+    width: 50%; 
+    padding: 50px; 
+    text-align: center;
+  
+  }
+
+  .title-section-retiro{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .retiro-img-section {
+    width: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+  }
+  
+  .retiro-img-sectionimg {
+    height: 100%;
+    object-fit: cover;
+  }
