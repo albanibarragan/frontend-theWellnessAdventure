@@ -9,6 +9,6 @@ import PlansCard from "./components/PlansCard/PlansCard.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <PlansCard />
+    <App />
   </BrowserRouter>
 );
