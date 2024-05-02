@@ -1,14 +1,16 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import plansData from "../../../data/plansData.js";
 import "./BuyForm.css";
 import { useRegFormContext } from "../../../providers/RegFormProvider.jsx";
-import { useNavigate } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { supabaseClient } from "../../../Supabase.js";
 
 const BuyForm = () => {
   const [, dispatch] = useRegFormContext();
   const navigate = useNavigate();
-
+const [plans,setPlans]=useState([])
+const [selectedPlan,setSelectedPlan]=useState('')
   const {
     register,
     formState: { errors },
@@ -20,11 +22,24 @@ const BuyForm = () => {
     if (isValid) {
       dispatch({ type: "SET_BUY_DATA", data: values });
     }
+    localStorage.setItem("plan", selectedPlan)
+    navigate("/payment")
   };
 
-  const onClick = () => {
-    navigate("/payment");
-  };
+const getplanes= async()=>{
+  const {data,error}=await supabaseClient.from('retreat_plan').select()
+  if(error){
+    console.log(error)
+    return
+  }
+  setPlans(data)
+}
+useEffect(()=>{
+getplanes()
+},[])
+
+
+
 
   const validatePlan = (value) => {
     if (value === "default") {
@@ -48,18 +63,18 @@ const BuyForm = () => {
                 required: true,
                 validate: validatePlan,
               })}
-              onChange={(event) => console.log(event.target.value)}
+              onChange={(event) => setSelectedPlan(event.target.value)}
             >
               <option className="opcion-plan" value="default">
                 Seleccionar plan
               </option>
-              {plansData.map((plan) => (
+              {plans.map((plan) => (
                 <option
                   className="opcion-plan"
-                  key={plan.value}
-                  value={plan.value}
+                  key={plan.plan_id}
+                  value={plan.plan_id}
                 >
-                  {plan.planName}
+                  {plan.plan_id}
                 </option>
               ))}
             </select>
@@ -115,7 +130,7 @@ const BuyForm = () => {
             Leer términos y condiciones
           </a>
         </div>
-        <input type="submit" value="continuar " onClick={onClick} />
+        <input type="submit" value="continuar " />
       </form>
     </div>
   );
