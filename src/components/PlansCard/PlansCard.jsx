@@ -7,17 +7,17 @@ import CardDetails from '../Card/CardDetails/CardDetails';
 
 
 const PlansCard = () => {
-    const [showModal, setShowModal] = useState(false);
+    const [showCard, setShowCard] = useState(false);
     const [selectedPlan, setSelectedPlan] = useState(null); // Track selected plan
 
-    const handleShowModal = (plan) => { // Pass plan data to modal
+    const handleShowCard = (plan) => {
         setSelectedPlan(plan);
-        setShowModal(true);
+        setShowCard(true);
     };
 
-    const handleCloseModal = () => {
-        setShowModal(false);
-        setSelectedPlan(null); // Reset selected plan on close
+    const handleCloseCard = () => {
+        setShowCard(false);
+        setSelectedPlan(null);
     };
 
     return (
@@ -57,7 +57,7 @@ const PlansCard = () => {
                                     </p>
                                     <button
                                         className="view-more-button"
-                                        onClick={() => handleShowModal(plan)} // Pass plan data
+                                        onClick={() => handleShowCard(plan)}
                                     >
                                         Más información <VscArrowSmallRight />
                                     </button>
@@ -67,8 +67,8 @@ const PlansCard = () => {
                     </div>
                 </section>
             </div>
-            {showModal && selectedPlan && (  // Render modal only if open and data exists
-                <CardDetails plan={selectedPlan} onClose={handleCloseModal} />
+            {showCard && selectedPlan && (
+                <CardDetails plan={selectedPlan} onClose={handleCloseCard} />
             )}
         </div>
     );
