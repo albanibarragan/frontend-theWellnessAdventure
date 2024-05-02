@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import "./PaymentForm.css";
 import { useRegFormContext } from "../../../providers/RegFormProvider.jsx";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const PaymentForm = () => {
   const [state, dispatch] = useRegFormContext();
   const navigate = useNavigate();
+  const planId = localStorage.getItem("plan")
+  useEffect(()=>{
+    if (!planId) {
+      navigate("/buy")
+    }
+  }, [])
   const {
     register,
     formState: { errors, isValid },

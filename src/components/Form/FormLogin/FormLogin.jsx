@@ -7,7 +7,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import "./FormLogin.css";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-
+import { supabaseClient } from "../../../Supabase.js";
 const FormLogin = () => {
   const [action, setAction] = useState("Iniciar sesion");
   const {
@@ -16,22 +16,31 @@ const FormLogin = () => {
     handleSubmit,
   } = useForm();
 
-  const onSubmit = (dataUser) => {
-    console.log(dataUser);
-  };
-
   const navigate = useNavigate();
 
   const handleRegisterClick = () => {
     navigate("/register");
   };
 
-  const handleLoginClick = () => {
-    navigate("/home");
+
+  const onSubmit = async(dataUser) => {
+    const { data, error } = await supabaseClient.auth.signInWithPassword(dataUser)
+    console.log(data);
+    if(error){
+      console.log(error)
+      return
+    }
+    const now= new Date();
+    const experationTime= now.getTime() + data.session.expires_in * 1000;
+    const sesion={token:data.session.access_token,expiration:experationTime, email: data.user.email}
+    sessionStorage.setItem("Sesion", JSON.stringify(sesion))
+    navigate("/home")
   };
 
+ 
   const onClick = () => {
     action === "Registrarse" ? handleRegisterClick() : handleLoginClick();
+
   };
 
   return (
@@ -111,7 +120,7 @@ const FormLogin = () => {
             <button
               type="submit"
               className={action === "Registrarse" ? "submit gray" : "submit"}
-              onClick={handleLoginClick}
+          
             >
               Iniciar Sesión
             </button>

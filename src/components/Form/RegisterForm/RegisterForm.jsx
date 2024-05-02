@@ -12,7 +12,8 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import "./RegisterForm.css";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-
+import { supabaseClient } from "../../../Supabase.js";
+import { data } from "autoprefixer";
 const RegisterForm = () => {
   const [action, setAction] = useState("BIENVENIDO A THE WELLNESS ADVENTURE");
   const {
@@ -21,14 +22,42 @@ const RegisterForm = () => {
     handleSubmit,
   } = useForm();
 
-  const onSubmit = (dataUser) => {
-    console.log(dataUser);
-  };
-
   const navigate = useNavigate();
 
   const onClick = () => {
     navigate("/login");
+  };
+
+
+  const onSubmit = async(dataUser) => {
+    const { data, error } = await supabaseClient.auth.signUp({
+      email: dataUser.email,
+      password: dataUser.password,
+    })
+    if(error){
+console.log(error)
+    return
+  }
+  console.log("Server Response: " + data);
+  const new_user={
+    id_user: data.user.id,
+    Cedula: dataUser.Cedula,
+    Nombre: dataUser.Nombre,
+    Correo: dataUser.email,
+    Direccion: dataUser.direccion,
+    Necesidades_Medicas: dataUser.salud
+    
+  }
+  console.log("ID:" + data.user.id)
+  console.log("RequestBody: " + new_user)
+  const { error_al_crear } = await supabaseClient.from('users')
+  .insert(new_user)
+  if(error_al_crear){
+    console.log(error_al_crear)
+        return
+      }
+
+    navigate("/login")
   };
 
   return (
