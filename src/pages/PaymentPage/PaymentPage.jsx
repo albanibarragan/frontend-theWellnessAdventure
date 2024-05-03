@@ -1,8 +1,8 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import PaymentForm from "../../components/Form/PaymentForm/PaymentForm";
 import ContainerHome from "../../components/containerHome/containerHome.jsx";
 import RegProviders from "../../providers/RegFormProvider";
-import {ProtectPage} from "../../AuthValidation";
+import { ProtectPage } from "../../AuthValidation";
 import { useNavigate } from "react-router-dom";
 
 const PaymentPage = () => {
@@ -10,7 +10,7 @@ const PaymentPage = () => {
   useEffect(() => {
     ProtectPage().then(data => {
       if (!data.exist) {
-        navigate("/") 
+        navigate("/")
       }
     })
   }, [])
@@ -18,7 +18,7 @@ const PaymentPage = () => {
     <div className="payment-page">
       <ContainerHome>
         <RegProviders>
-          <div className="payment-page-container">
+          <div className="userPlans-container">
             <PaymentForm />
           </div>
         </RegProviders>

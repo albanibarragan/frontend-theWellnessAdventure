@@ -10,7 +10,6 @@ const OrderPage = () => {
       <ContainerHome>
         <div className="payment-page-container">
           <BuyPage />
-          <PaymentDetails />
         </div>
       </ContainerHome>
     </div>
