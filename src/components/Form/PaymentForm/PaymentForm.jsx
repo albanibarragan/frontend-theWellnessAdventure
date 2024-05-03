@@ -23,7 +23,7 @@ const PaymentForm = () => {
     console.log(values);
     if (isValid) {
       dispatch({ type: "SET_PAYMENT_DATA", data: values });
-      navigate("/paymentDetails");
+      navigate("/home");
     }
   };
   const [paymentMethod, setPaymentMethod] = useState("");
