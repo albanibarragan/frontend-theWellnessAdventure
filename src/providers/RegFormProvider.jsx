@@ -3,7 +3,7 @@ import { createContext, useContext, useReducer } from "react";
 const RegFormContext = createContext();
 
 export const useRegFormContext = () => {
-  return useContext(RegFormContext); //acceder a contexto y usarlo
+  return useContext(RegFormContext);
 };
 
 const reducer = (state, action) => {

@@ -23,21 +23,21 @@ const FormLogin = () => {
   };
 
 
-  const onSubmit = async(dataUser) => {
+  const onSubmit = async (dataUser) => {
     const { data, error } = await supabaseClient.auth.signInWithPassword(dataUser)
     console.log(data);
-    if(error){
+    if (error) {
       console.log(error)
       return
     }
-    const now= new Date();
-    const experationTime= now.getTime() + data.session.expires_in * 1000;
-    const sesion={token:data.session.access_token,expiration:experationTime, email: data.user.email}
+    const now = new Date();
+    const experationTime = now.getTime() + data.session.expires_in * 1000;
+    const sesion = { token: data.session.access_token, expiration: experationTime, email: data.user.email }
     sessionStorage.setItem("Sesion", JSON.stringify(sesion))
     navigate("/home")
   };
 
- 
+
   const onClick = () => {
     action === "Registrarse" ? handleRegisterClick() : handleLoginClick();
 
@@ -74,8 +74,9 @@ const FormLogin = () => {
                 })}
               />
             </div>
+            {errors.email && <p className="errors">Por favor verifica el email</p>}
           </div>
-          {errors.email && <p>Por favor verifica el email</p>}
+
           <div className="input-box">
             <label className="login-label">contraseña</label>
             <div className="login-container-img-input">
@@ -92,7 +93,7 @@ const FormLogin = () => {
                   pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/,
                 })}
               />
-              {errors.password && <p>Por davor verifica la contraseña</p>}
+              {errors.password && <p className="errors">Por davor verifica la contraseña</p>}
             </div>
           </div>
           {action === "Sign Up" ? (
@@ -120,7 +121,7 @@ const FormLogin = () => {
             <button
               type="submit"
               className={action === "Registrarse" ? "submit gray" : "submit"}
-          
+
             >
               Iniciar Sesión
             </button>

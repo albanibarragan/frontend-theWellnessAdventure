@@ -2,15 +2,15 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import "./BuyForm.css";
 import { useRegFormContext } from "../../../providers/RegFormProvider.jsx";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { supabaseClient } from "../../../Supabase.js";
 
 const BuyForm = () => {
   const [, dispatch] = useRegFormContext();
   const navigate = useNavigate();
-const [plans,setPlans]=useState([])
-const [selectedPlan,setSelectedPlan]=useState('')
+  const [plans, setPlans] = useState([])
+  const [selectedPlan, setSelectedPlan] = useState('')
   const {
     register,
     formState: { errors },
@@ -26,17 +26,17 @@ const [selectedPlan,setSelectedPlan]=useState('')
     navigate("/payment")
   };
 
-const getplanes= async()=>{
-  const {data,error}=await supabaseClient.from('retreat_plan').select()
-  if(error){
-    console.log(error)
-    return
+  const getplanes = async () => {
+    const { data, error } = await supabaseClient.from('retreat_plan').select()
+    if (error) {
+      console.log(error)
+      return
+    }
+    setPlans(data)
   }
-  setPlans(data)
-}
-useEffect(()=>{
-getplanes()
-},[])
+  useEffect(() => {
+    getplanes()
+  }, [])
 
 
 
@@ -50,7 +50,7 @@ getplanes()
   return (
     <div className="buy-form-container">
       <div className="buy-form-title">
-        <h2>Comprar Plan</h2>
+        <h2>Ristro a Plan de retiro</h2>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="buy-form">
         <div className="buy-inputs">

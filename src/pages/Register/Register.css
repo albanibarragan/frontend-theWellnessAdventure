@@ -11,18 +11,12 @@
   margin: 1rem auto;
 }
 
-.register-page-right {
-    width: 50%;
-    margin-left: auto;
-    background-color: #272F37;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
+
 .register-page-left {
   position: relative;
   display: flex;
   justify-content: center;
-  width: 50%;
+  width: 46%;
   background-color: rgba( 240, 255, 255, 0.20 )	;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
@@ -30,8 +24,6 @@
 }
 
 .register-page-left img {
-  /* Add display: block */
-   width: 800px; /* Establecer el ancho deseado */
-   height: 343px; /* Establecer la altura deseada */
+
   display: block;
 }
