@@ -35,7 +35,7 @@ setUser(data.user)
 
 
 const compraPlan= async()=>{
-  const{error}=await supabaseClient.from('Plan_users').insert({"id-user":user.id_user, "id_plan":planId})
+  const{error}=await supabaseClient.from('Plan_users').insert({"id-user":user.id_user, "id_plan":planId, "Estatus": true})
 if(error){
   console.log(error);
   return
