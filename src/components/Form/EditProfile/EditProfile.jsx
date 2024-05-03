@@ -1,6 +1,11 @@
 import { React, useState } from "react";
 import { useForm } from "react-hook-form";
-import "./EditProfile.css"
+import './EditProfile.css'
+import { useEffect } from "react";
+
+const cancelar = () => {
+    navigate("/cancelplan");
+  };
 
 const EditProfile = () => {
     const {
@@ -28,7 +33,7 @@ const EditProfile = () => {
         console.log("values")
     };
     return (
-        <div className="card-form-profile">
+        <div className="card-form-profil bg-white border-gray-500 dark:border-gray-200 dark:bg-gray-700">
             <h2 className="title-editProfile">Editar Perfil</h2>
             <form className="profile-form" onSubmit={handleSubmit(onSubmit)}>
                 <div className="editProfile">
@@ -73,7 +78,7 @@ const EditProfile = () => {
                                 })}
                             />
                         </div>
-                        {errors.address && <p>Por favor verifique el apellido</p>}
+                        {errors.address && <p>Por favor verifique su Dirección</p>}
                         <div className="input-box">
                             <label className="edit-label">Correo</label>
                             <input
@@ -89,33 +94,12 @@ const EditProfile = () => {
                             />
                         </div>
                         {errors.email && <p>Por favor verifica el email</p>}
-                        <div className="input-box">
-                            <label htmlFor="dateBirthday" className="profile-label">Fecha de Nacimiento</label>
-                            <input
-                                {...register('dateOfBirth')}
-                                id="dateBirthday"
-                                name="dateBirthday"
-                                type="date"
-                            />
-                        </div>
+                       
+ 
                     </div>
 
                     <div className="editProfile-inputs">
 
-                        <div className="input-box">
-                            <label htmlFor="lastName" className="profile-label">Apellido</label>
-                            <input
-                                id="lastName"
-                                name="lastName"
-                                type="text"
-                                placeholder="Apellido"
-                                {...register("apellido", {
-                                    required: true,
-                                    maxLength: 20,
-                                })}
-                            />
-                        </div>
-                        {errors.apellido && <p>Por favor verifique el apellido</p>}
                         <div className="input-box">
                             <label htmlFor="phone" className="profile-label">Teléfono</label>
                             <input
@@ -129,7 +113,9 @@ const EditProfile = () => {
                                 })}
                             />
                         </div>
-                        {errors.phone && <p>Por favor verifique el apellido</p>}
+                        {errors.phone && <p>Por favor verifique el telefono</p>}
+
+                    
                         <div className="input-box">
                             <label htmlFor="phone" className="profile-label">Teléfono (Emergencia)</label>
                             <input
@@ -143,7 +129,7 @@ const EditProfile = () => {
                                 })}
                             />
                         </div>
-                        {errors.phoneEmergencia && <p>Por favor verifique el apellido</p>}
+                        {errors.phoneEmergencia && <p>Por favor verifique el telefono de emergencia</p>}
 
 
                         <div className="input-box">
@@ -166,37 +152,31 @@ const EditProfile = () => {
                             )}
                         </div>
                         <div className="input-box">
-                            <label className="profile-label">Sugerencias</label>
+                            <label htmlFor="dateBirthday" className="edit-label">Fecha de Nacimiento</label>
                             <input
-                                type="text" className="sugerencias-input"
-                                {...register("sugerencias", {
-                                    maxLength: 1000,
-                                    required: true,
-                                })}
-                                placeholder="Ingrese su sugerencias personales"
-                                required
+                                {...register('dateOfBirth')}
+                                id="dateBirthday"
+                                name="dateBirthday"
+                                type="date"
                             />
-                            {errors.sugerencias?.type === "required" && (
-                                <p className="parrafo-error">
-                                    El campo de sugerencias personales es requerido
-                                </p>
-                            )}
-                            {errors.sugerencias?.type === "maxLength" && (
-                                <p className="parrafo-error">
-                                    El campo de sugerencias personales debe de tener menos de 1000
-                                    caracteres
-                                </p>
-                            )}
                         </div>
+
+
+                       <div/>
 
                     </div>
                 </div >
 
                 <div className='buttons-editProfile'>
-                    <button className="button-cambios" type='submit'>Guardar Cambios</button>
+                    <button className="button-cambios" type='submit'>Mofificar información</button>
 
                     <button className="button-limpiar" onClick={handleClear} type='reset'>Limpiar</button>
+                    
+                    <button className="button-eliminar-suscripcion"  onClick={cancelar} >Cancelar plan de retiro  </button>
                 </div>
+             
+                    
+           
             </form >
         </div >
     )

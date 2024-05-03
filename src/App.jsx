@@ -15,6 +15,7 @@ import PaymentForm from "./components/Form/PaymentForm/PaymentForm.jsx";
 import PaymentDetails from "./components/PaymentDetails/PaymentDetails.jsx";
 import BuyForm from "./components/Form/BuyForm/BuyForm.jsx";
 import RegProviders from "./providers/RegFormProvider.jsx";
+import Adiosplan from "./pages/Cancelarplan/Adiosplan.jsx";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/buy" element={<BuyForm />} />
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/paymentDetails" element={<DetailsPayment />} />
+          <Route path="/adios" element={<Adiosplan />} />
         </Routes>
       </div>
     </RegProviders>
