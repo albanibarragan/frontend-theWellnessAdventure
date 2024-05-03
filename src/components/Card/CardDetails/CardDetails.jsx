@@ -6,13 +6,13 @@ const CardDetails = ({ plan, onClose }) => {
         <div className="modal">
             <div className="modal-content">
                 <div className="title-description-card">
-                    <h1 className="title-plans-card">{plan.planName}</h1>
-                    <p className="description-plan-card">{plan.description}</p>
+                    <h1 className="title-plans-card">{plan?.plan_id}</h1>
+                    <p className="description-plan-card">{plan.Descripcion}</p>
                 </div>
                 <div className="plan-info-card">
                     <p className="plan-cost-card">
-                        {plan.monto.currency} {plan.monto.amount}{" "}
-                        {plan.monto.paymentFrequency === "mensual" && "mensual"}
+                        $ {plan.Precio}{" "}
+                        "Mensual"
                     </p>
                     <hr />
                     <div className="activities-card">
@@ -20,8 +20,8 @@ const CardDetails = ({ plan, onClose }) => {
                             <h1 className="title-activities-card">Actividades</h1>
                         </div>
                         <ul className="activities-list-card">
-                            {plan.activities.map((activities) => (
-                                <li key={activities}>{activities}</li>
+                            {plan?.Planes_Actividades.map((activities) => (
+                                <li key={activities.Actividades.id_actividad}>{activities.Actividades.Nombre}</li>
                             ))}
                         </ul>
                     </div>
@@ -30,8 +30,8 @@ const CardDetails = ({ plan, onClose }) => {
                             <h1 className="title-benefits-card">Beneficios</h1>
                         </div>
                         <ul className="benefits-list-card">
-                            {plan.benefits.map((beneficio) => (
-                                <li key={beneficio}>{beneficio}</li>
+                            {plan?.Planes_Actividades.map((beneficio) => (
+                                <li key={beneficio.Actividades.id_actividad}>{beneficio.Actividades.Descripción}</li>
                             ))}
                         </ul>
                     </div>

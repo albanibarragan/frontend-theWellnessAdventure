@@ -4,7 +4,7 @@ import "./Home.css";
 import ContainerHome from "../../components/containerHome/containerHome.jsx";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabaseClient } from "../../Supabase.js";
+import { ProtectPage } from "../../AuthValidation";
 const Home = () => {
   const hasActivePlan = true;
   const planName = "Plan Básico";
@@ -13,32 +13,19 @@ const Home = () => {
   const navigate = useNavigate();
   const [user, SetUser] = useState(false)
 
-  const getUserData = async (email) => {
-    const { data, error } = await supabaseClient.from("users").select("*").eq("Correo", email)
-    console.log("EMAIL " + email)
-    if (error || data.length == 0) {
-      sessionStorage.removeItem("Sesion")
-      navigate("/login")
-      return
-    }
-    if (data) {
-      SetUser(data[0])
-    }
-
-  }
   useEffect(() => {
-    console.log(user)
-    if (!user) {
-      const sesion = sessionStorage.getItem("Sesion")
-      if (!sesion) {
-        navigate("/login")
-      }
 
-      const sesionData = JSON.parse(sesion)
-      console.log(sesionData)
-      getUserData(sesionData?.email)
+    if (user === false) {
+      ProtectPage().then(data => {
+        if (!data.exist) {
+          navigate("/login")
+          return
+        }
+        SetUser(data.user)
+      })
     }
 
+    console.log(user)
   }, [user])
 
 
@@ -47,7 +34,7 @@ const Home = () => {
       <ContainerHome>
         <div className="home-container">
           <div className="left-section">
-            <h2 className="title-section">¡Bienvenido, {user.Nombre}!</h2>
+            <h2 className="title-section">¡Bienvenido, {user?.Nombre}!</h2>
             {hasActivePlan ? (
               <div className="plans-section-home">
                 <p className="title-plan-section">
