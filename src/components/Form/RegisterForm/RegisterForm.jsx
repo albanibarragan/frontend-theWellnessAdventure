@@ -213,15 +213,14 @@ const RegisterForm = () => {
             {errors.cedula && <span className="error">Verifique la cédula ingresada</span>}
           </div>
           <div className="input-box-register">
-            <div className="input-box">
-              <label htmlFor="dateBirthday" className="register-label">Fecha de Nacimiento</label>
-              <div className="register-container-img-input">
-                <input
-                  id="dateBirthday"
-                  name="dateBirthday"
-                  type="date"
-                />
-              </div>
+            <label htmlFor="dateBirthday" className="register-label">Fecha de Nacimiento</label>
+            <div className="register-container-img-input">
+              <input
+                className="register-input"
+                id="dateBirthday"
+                name="dateBirthday"
+                type="date"
+              />
             </div>
           </div>
           <div className="input-box-register">
@@ -349,7 +348,7 @@ const RegisterForm = () => {
           {action === "Register" ? (
             <div></div>
           ) : (
-            <div className="login-form">
+            <div className="login-form-register">
               ¿Ya tienes una cuenta?
               <a className="buttonLogin" onClick={onClick}>
                 Iniciar sesion
@@ -357,12 +356,6 @@ const RegisterForm = () => {
             </div>
           )}
           <div className="submit-container-register">
-            <div className="iniciarsesion-google">
-              <GoogleOAuthProvider clientId="YOUR_CLIENT_ID">
-                {" "}
-                <GoogleLoginComponent />
-              </GoogleOAuthProvider>
-            </div>
             <button
               className="button-register"
               target="_blank"

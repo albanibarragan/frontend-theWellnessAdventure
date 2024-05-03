@@ -57,7 +57,7 @@ const FormLogin = () => {
       </div>
       <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="login-inputs">
-          <div className="input-box">
+          <div className="input-box-login ">
             <label className="login-label">Correo</label>
             <div className="login-container-img-input">
               <img src={email_icon} alt="" />
@@ -77,7 +77,7 @@ const FormLogin = () => {
             {errors.email && <p className="errors">Por favor verifica el email</p>}
           </div>
 
-          <div className="input-box">
+          <div className="input-box-login ">
             <label className="login-label">contraseña</label>
             <div className="login-container-img-input">
               <img src={password_icon} alt="" />
@@ -85,7 +85,6 @@ const FormLogin = () => {
                 className="login-input"
                 id="password"
                 name="password"
-                required
                 type="password"
                 placeholder="Contraseña"
                 {...register("password", {
@@ -94,7 +93,7 @@ const FormLogin = () => {
                 })}
               />
               {errors.password && (
-                <p>
+                <p className="errors">
                   {errors.password.type === "required" && (
                     "La contraseña es obligatoria. Por favor, introduce una contraseña."
                   )}
@@ -113,12 +112,6 @@ const FormLogin = () => {
             </div>
           )}
           <div className="submit-container-login">
-            <div className="iniciarsesion-google">
-              <GoogleOAuthProvider clientId="YOUR_CLIENT_ID">
-                {" "}
-                <GoogleLoginComponent />
-              </GoogleOAuthProvider>
-            </div>
             <button
               className="button-registrarse"
               target="_blank"

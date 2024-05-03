@@ -1,14 +1,11 @@
 .login-page {
-    padding: 1rem 0;
-    padding-top: 8rem;
-    padding-bottom: 8rem;
     width: 100%;
     justify-content: center;
 }
 
 .login-container {
     display: flex;
-    width: 70%;
+    width: 80%;
     border-radius: 0.5rem;
     margin: 1rem auto;
 }

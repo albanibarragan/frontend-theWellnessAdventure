@@ -67,7 +67,7 @@
   }
 
 .terms-container {
-  display: flex;
+
   align-items: center;
   margin-bottom: 1rem;
 }
@@ -80,8 +80,6 @@
 
 
 #terms {
-  width: 15px; 
-  height: 15px; 
   border: 1px solid #ccc; 
   margin-right: 5px;
 }
@@ -93,19 +91,19 @@ label[for="terms"] {
 
 
 .terms-container a {
-  text-decoration: none;
+
   color: #007bff;
   font-weight: bold;
 }
 
-.login-form{
+.login-form-register{
     padding-left: 62px;
     margin-top: 27px;
     color: #797979;
     font-size: 18px;
 }
 
-.login-form a{
+.login-form-register a{
     color: #007954;
     cursor: pointer;
 }
@@ -124,10 +122,10 @@ label[for="terms"] {
     border-radius: 5px;
     font-weight: bold;
     font-size: 1rem;
-    color: #FFFFFF;
+    color: #FFFFFF
   }
   
   .errors {
-    color: rgba(207, 74, 13, 0.8);
+    color: rgba(207, 13, 13, 0.8);
     font-size: 1rem; 
 }
