@@ -6,49 +6,48 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabaseClient } from "../../Supabase.js";
 const Home = () => {
-  const userName = "Test User";
   const hasActivePlan = true;
   const planName = "Plan Básico";
   const startDate = "2024-01-01";
   const endDate = "2024-12-31";
   const navigate = useNavigate();
-  const [user,SetUser] = useState(false)
+  const [user, SetUser] = useState(false)
 
-const getUserData = async (email) => {
-  const {data, error} = await supabaseClient.from("users").select("*").eq("Correo",email)
-  console.log("EMAIL " + email)
-  if(error || data.length == 0){
-    sessionStorage.removeItem("Sesion")
-    navigate("/login")
-    return
-  }
-  if(data){
-    SetUser(data[0])
-  }
-  
-}
-useEffect(()=>{
-  console.log(user)
-  if (!user) {
-    const sesion=sessionStorage.getItem("Sesion")
-    if(!sesion){
+  const getUserData = async (email) => {
+    const { data, error } = await supabaseClient.from("users").select("*").eq("Correo", email)
+    console.log("EMAIL " + email)
+    if (error || data.length == 0) {
+      sessionStorage.removeItem("Sesion")
       navigate("/login")
+      return
     }
-  
-    const sesionData = JSON.parse(sesion) 
-    console.log(sesionData)
-    getUserData(sesionData?.email)
-  }
+    if (data) {
+      SetUser(data[0])
+    }
 
-},[user])
-  
+  }
+  useEffect(() => {
+    console.log(user)
+    if (!user) {
+      const sesion = sessionStorage.getItem("Sesion")
+      if (!sesion) {
+        navigate("/login")
+      }
+
+      const sesionData = JSON.parse(sesion)
+      console.log(sesionData)
+      getUserData(sesionData?.email)
+    }
+
+  }, [user])
+
 
   return (
     <div className="pages-home">
       <ContainerHome>
         <div className="home-container">
           <div className="left-section">
-            <h2 className="title-section">¡Bienvenido, {userName}!</h2>
+            <h2 className="title-section">¡Bienvenido, {user.Nombre}!</h2>
             {hasActivePlan ? (
               <div className="plans-section-home">
                 <p className="title-plan-section">

@@ -1,7 +1,5 @@
 .register-container-form{
   padding: 2rem; 
-  border-radius: 0.375rem; 
-  border-width: 2px; 
   margin: auto;
   width: 100%; 
   border-top-right-radius: 10px;
@@ -13,7 +11,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 9px;
+    gap: 10px;
     width: 100%;
 
   }
@@ -39,8 +37,13 @@
 
 .input-box-register{
     position: relative;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 }  
+
+.register-label{
+  font-size: 1.2rem;
+    font-weight: bolder;
+}
  
 .register-input {
         width: 100%;
@@ -51,6 +54,8 @@
         padding: 1rem .5rem;
   }
 
+
+
 .register-input:focus{
     border: 1px solid #3DA6FB;
 }
@@ -58,36 +63,35 @@
 .register-container-img-input{
     display: grid;
     grid-template-columns: 1fr;
+
   }
-/* Estilos generales para el contenedor de términos */
+
 .terms-container {
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
 }
 
-/* Estilos para el contenedor del checkbox y la etiqueta */
+
 .check-terms {
-  display: flex; /* Permite que los elementos se coloquen en fila */
-  align-items: center; /* Alinea los elementos verticalmente en el centro */
+  display: flex; 
+  align-items: center; 
 }
 
-/* Estilos para la casilla de verificación */
+
 #terms {
-  width: 15px; /* Establecer el ancho deseado */
-  height: 15px; /* Establecer la altura deseada */
-  border: 1px solid #ccc; /* Agregar un borde para definir el checkbox */
+  width: 15px; 
+  height: 15px; 
+  border: 1px solid #ccc; 
   margin-right: 5px;
 }
 
-
-/* Estilos para la etiqueta */
 label[for="terms"] {
   cursor: pointer;
   user-select: none;
 }
 
-/* Estilos para el enlace */
+
 .terms-container a {
   text-decoration: none;
   color: #007bff;

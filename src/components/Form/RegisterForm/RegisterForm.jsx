@@ -80,14 +80,25 @@ const RegisterForm = () => {
               <input
                 className="register-input"
                 type="text"
+                name="nombre"
                 placeholder="Nombre"
                 {...register("nombre", {
                   required: true,
                   maxLength: 20,
+                  pattern: /^[a-zA-ZÀ-ÿ\u00f1\u00d1 ]+$/,
                 })}
               />
             </div>
-            {errors.nombre && <p>Por favor verifique el nombre</p>}
+            {errors.nombre && (
+              <p className="errors">
+                {errors.nombre.type === "required" && (
+                  "Por favor ingrese su nombre."
+                )}
+                {errors.nombre.type === "pattern" && (
+                  "El nombre solo puede contener letras y espacios."
+                )}
+              </p>
+            )}
           </div>
           <div className="input-box-register">
             <label className="register-label">Apellido</label>
@@ -103,7 +114,16 @@ const RegisterForm = () => {
                 })}
               />
             </div>
-            {errors.apellido && <p>Por favor verifique el apellido</p>}
+            {errors.apellido && (
+              <p className="errors">
+                {errors.apellido.type === "required" && (
+                  "Por favor ingrese su apellido."
+                )}
+                {errors.apellido.type === "pattern" && (
+                  "El apellido solo puede contener letras y espacios."
+                )}
+              </p>
+            )}
           </div>
           <div className="input-box-register">
             <label className="register-label">Correo</label>
@@ -121,8 +141,8 @@ const RegisterForm = () => {
                     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                 })}
               />
-              {errors.email && <p>Por favor verifica el email</p>}
-            </div>
+
+            </div>  {errors.email && <p className="errors">Por favor verifica el email</p>}
           </div>
           <div className="input-box-register">
             <label className="register-label">Teléfono</label>
@@ -138,9 +158,18 @@ const RegisterForm = () => {
                 })}
               />
             </div>
-
+            {errors.phone && (
+              <p className="errors">
+                {errors.phone.type === "required" && (
+                  "Por favor ingrese un teléfono de emergencia."
+                )}
+                {errors.phone.type === "pattern" && (
+                  "El teléfono debe contener 10 dígitos numéricos."
+                )}
+              </p>
+            )}
           </div>
-          {errors.phone && <p>Por favor verifique el Telefono</p>}
+
           <div className="input-box-register">
             <label className="register-label">Teléfono(De Emergencia)</label>
             <div className="register-container-img-input">
@@ -155,8 +184,18 @@ const RegisterForm = () => {
                 })}
               />
             </div>
+            {errors.phoneEmergencia && (
+              <p className="errors">
+                {errors.phoneEmergencia.type === "required" && (
+                  "Por favor ingrese un teléfono de emergencia."
+                )}
+                {errors.phoneEmergencia.type === "pattern" && (
+                  "El teléfono debe contener 10 dígitos numéricos."
+                )}
+              </p>
+            )}
           </div>
-          {errors.phoneEmergencia && <p>Por favor verifique el Telefono</p>}
+
           <div className="input-box-register">
             <label className="register-label">Cédula</label>
             <div className="register-container-img-input">
@@ -199,12 +238,12 @@ const RegisterForm = () => {
                 placeholder="Direccion"
                 {...register("address", {
                   required: true,
-                  maxLength: 20,
+                  maxLength: 100,
                 })}
               />
-            </div>
+            </div>      {errors.address && <p className="errors">Por favor ingrese una direccion</p>}
           </div>
-          {errors.address && <p>Por favor verifique el apellido</p>}
+
           <div className="input-box-register">
             <label className="register-label">Contraseña</label>
             <div className="register-container-img-input">
@@ -217,7 +256,6 @@ const RegisterForm = () => {
                 className="register-input"
                 id="password"
                 name="password"
-                required
                 type="password"
                 placeholder="Contraseña"
                 {...register("password", {
@@ -226,7 +264,16 @@ const RegisterForm = () => {
                 })}
               />
             </div>
-            {errors.password && <p>Por favor verifique la contraseña</p>}
+            {errors.password && (
+              <p className="errors">
+                {errors.password.type === "required" && (
+                  "La contraseña es obligatoria. Por favor, introduce una contraseña."
+                )}
+                {errors.password.type === "pattern" && (
+                  "La contraseña no cumple con los requisitos de seguridad. Debe contener letras mayúsculas y minúsculas, números y al menos un símbolo especial (!@#$%^&*). Inténtalo de nuevo."
+                )}
+              </p>
+            )}
           </div>
           <div className="input-box-register">
             <label className="register-label">Confirmar su contraseña</label>
@@ -243,13 +290,22 @@ const RegisterForm = () => {
                 required
                 type="password"
                 placeholder="Confirmar contraseña"
-                {...register("passwordC", {
+                {...register("password", {
                   required: true,
                   pattern: /^[a-zA-Z0-9!@#$%^&*]+$/,
                 })}
               />
             </div>
-            {errors.passwordC && <p>Por favor verifique la contraseña</p>}
+            {errors.password && (
+              <p className="errors">
+                {errors.password.type === "required" && (
+                  "La contraseña es obligatoria. Por favor, introduce una contraseña."
+                )}
+                {errors.password.type === "pattern" && (
+                  "La contraseña no cumple con los requisitos de seguridad. Debe contener letras mayúsculas y minúsculas, números y al menos un símbolo especial (!@#$%^&*). Inténtalo de nuevo."
+                )}
+              </p>
+            )}
           </div>
           <div className="input-box-register">
             <label className="register-label">Información de salud</label>
@@ -263,13 +319,13 @@ const RegisterForm = () => {
                 className="register-input"
                 type="text"
                 {...register("salud", { maxLength: 1000, required: true })}
-                placeholder="Ingrese su informacion de medica de salud actual"
+                placeholder="Ingrese su informacion medica de salud actual"
               />
               {errors.salud?.type === "required" && (
-                <p>El campo de informacion de salud es requerido</p>
+                <p className="errors">El campo de informacion de salud es obligatorio. Por favor, introduzca su informacionmedica .</p>
               )}
               {errors.salud?.type === "maxLength" && (
-                <p>
+                <p className="errors">
                   El campo de informacion de salud debe de tener menos de 1000
                   caracteres
                 </p>

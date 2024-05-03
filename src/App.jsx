@@ -11,6 +11,9 @@ import EditProfilePage from "./pages/EditProfile/EditProfilePage.jsx";
 import PaymentPage from "./pages/PaymentPage/PaymentPage.jsx";
 import OrderPage from "./pages/OrderPage/OrderPage.jsx";
 import DetailsPayment from "./pages/DetailsPayment/DetailsPayment.jsx";
+import BuyForm from "./components/Form/BuyForm/BuyForm.jsx";
+import RegProviders from "../src/providers/RegFormProvider.jsx"
+
 
 const App = () => {
   return (
