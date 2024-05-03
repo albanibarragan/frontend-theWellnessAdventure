@@ -3,15 +3,29 @@ import { useForm } from "react-hook-form";
 import "./PaymentForm.css";
 import { useRegFormContext } from "../../../providers/RegFormProvider.jsx";
 import { useNavigate, useSearchParams } from "react-router-dom";
-
+import {ProtectPage} from "../../../AuthValidation.js"
+import { supabaseClient } from "../../../Supabase.js";
 const PaymentForm = () => {
   const [state, dispatch] = useRegFormContext();
   const navigate = useNavigate();
   const planId = localStorage.getItem("plan")
+
+
+ const [user, setUser]=useState(false)
   useEffect(()=>{
     if (!planId) {
-      navigate("/buy")
+      navigate("/order")
+      
     }
+
+ ProtectPage().then(data =>{
+  if(!data.exist){
+    navigate("/login")
+  }if(!user){
+setUser(data.user)
+
+  }
+ })
   }, [])
   const {
     register,
@@ -19,11 +33,26 @@ const PaymentForm = () => {
     handleSubmit,
   } = useForm();
 
+
+const compraPlan= async()=>{
+  const{error}=await supabaseClient.from('Plan_users').insert({"id-user":user.id_user, "id_plan":planId})
+if(error){
+  console.log(error);
+  return
+}
+localStorage.removeItem("plan")
+navigate("/home")
+}
+
+
   const onSubmit = (values) => {
     console.log(values);
     if (isValid) {
       dispatch({ type: "SET_PAYMENT_DATA", data: values });
-      navigate("/home");
+       console.log(user)
+compraPlan();
+    
+    
     }
   };
   const [paymentMethod, setPaymentMethod] = useState("");
