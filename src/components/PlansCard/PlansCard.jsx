@@ -1,14 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './PlansCard.css';
-import plansData from '../../data/plansData';
 import { VscArrowSmallRight } from "react-icons/vsc";
 import { VscCheck } from "react-icons/vsc";
 import CardDetails from '../Card/CardDetails/CardDetails';
+import { supabaseClient } from "../../Supabase.js"
 
 
 const PlansCard = () => {
     const [showCard, setShowCard] = useState(false);
     const [selectedPlan, setSelectedPlan] = useState(null); // Track selected plan
+    
+    const [planes, SetPlanes] = useState([])
+    const getPlan = async () => {
+      const { data, error } = await supabaseClient.from("retreat_plan").select(
+        `
+        *,
+        Planes_Actividades(
+          Actividades(*)
+        )
+        `,
+      )
+      if (error) {
+        console.log(error)
+        return
+      }
+
+      SetPlanes(data)
+      console.log(data)
+    }
+
+  useEffect(() => {
+    getPlan()
+  }, [])
 
     const handleShowCard = (plan) => {
         setSelectedPlan(plan);
@@ -33,22 +56,27 @@ const PlansCard = () => {
             <div className="plans-container">
                 <section className="text-white body-font">
                     <div className="card-grid">
-                        {plansData.map((plan) => (
-                            <div className="plans-card" key={plan.id}>
+                        { planes.length > 0 
+                          ? planes.map((plan) => (
+                            <div className="plans-card" key={plan?.plan_id}>
                                 <div className="card-content">
-                                    <h2 className="card-title">{plan.planName}</h2>
+                                    <h2 className="card-title">{plan?.plan_id}</h2>
                                     <hr />
                                     <div className="plan-info">
                                         <p className="plan-cost">
-                                            {plan.monto.currency} {plan.monto.amount}{" "}
-                                            {plan.monto.paymentFrequency === "mensual" && "mensual"}
+                                            $ {plan?.Precio}{" "}
+                                            "mensual"
                                         </p>
                                         <ul className="benefits-list">
-                                            {plan.benefits.map((benefit, index) => (
+                                            {
+                                              plan?.Planes_Actividades.length > 0
+                                              ? plan.Planes_Actividades.map((benefit, index) => (
                                                 <li key={index} className="benefit-item">
-                                                    <VscCheck />{benefit}
+                                                      <VscCheck />{benefit?.Actividades?.Descripción}
                                                 </li>
-                                            ))}
+                                            ))
+                                            : <></>
+                                            }
                                         </ul>
 
                                     </div>
@@ -61,7 +89,10 @@ const PlansCard = () => {
                                     </button>
                                 </div>
                             </div>
-                        ))}
+                        )
+                          )
+                          : <></>
+                        }
                     </div>
                 </section>
             </div>
