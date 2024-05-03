@@ -38,9 +38,6 @@ const BuyForm = () => {
     getplanes()
   }, [])
 
-
-
-
   const validatePlan = (value) => {
     if (value === "default") {
       return "Por favor, seleccione un plan diferente al predeterminado.";
@@ -50,7 +47,7 @@ const BuyForm = () => {
   return (
     <div className="buy-form-container">
       <div className="buy-form-title">
-        <h2>Ristro a Plan de retiro</h2>
+        <h2>Registrarse a Plan de retiro</h2>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="buy-form">
         <div className="buy-inputs">

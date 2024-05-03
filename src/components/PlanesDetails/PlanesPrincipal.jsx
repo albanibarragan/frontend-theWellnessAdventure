@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const PlanesDetails = () => {
+const PlanesPrincipal = () => {
   const navigate = useNavigate();
 
   const onClick = () => {
@@ -14,23 +14,36 @@ const PlanesDetails = () => {
             <div class=" flex flex-wrap -m-4">
               <div class="p-4 lg:w-1/3 ">
                 <div class="h-full bg-blue-500 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative ">
-                  <h1 class="tracking-widest text-xs title-font font-medium text-gray-100 mb-1 ">
-                    Tipo de planes{" "}
-                  </h1>
-                  <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-100 mb-3">
-                    Plan de retiro
-                  </h1>
-                  <p class="text-white leading-relaxed mb-3">Buenas.</p>
 
-                  <div class="  p-4 lg:w-1/2 sm:w-1/2 ">
+                  <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-100 mb-3">
+                    PLAN PRO INICIAL
+                  </h1>
+
+                  <div class="  p-8 ">
                     <h2 class="font-medium title-font tracking-widest text-gray-100 mb-4 text-sm text-center sm:text-left">
-                      Qué contiene
+                      $25"Mensual"
+                    </h2>
+                    <hr />
+                    <h2 class="font-medium title-font tracking-widest text-gray-100 mb-4 text-sm text-center sm:text-left">
+                      ¿Qué contiene?
                     </h2>
                     <nav class="flex flex-col sm:items-start sm:text-left text-center items-center -mb-1 space-y-2.5">
+
                       <a>
-
-
-                        First Link
+                        <span class="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
+                          <svg
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="3"
+                            class="w-3 h-3"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M20 6L9 17l-5-5"></path>
+                          </svg>
+                        </span>
+                        Mejorar la flexibilidad y equilibrio
                       </a>
                       <a>
                         <span class="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
@@ -46,29 +59,26 @@ const PlanesDetails = () => {
                             <path d="M20 6L9 17l-5-5"></path>
                           </svg>
                         </span>
-                        Second Link
+                        Te permite pasar un tiempo diferente
                       </a>
                       <a>
                         <span class="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
-
+                          <svg
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="3"
+                            class="w-3 h-3"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M20 6L9 17l-5-5"></path>
+                          </svg>
                         </span>
-                        Third Link
-                      </a>
-                      <a>
-                        <span class="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
-
-                        </span>
-                        Fourth Link
-                      </a>
-                      <a>
-                        <span class="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
-
-                        </span>
-                        Fifth Link
+                        Fomenta la relajacion y el bienestar emocional
                       </a>
                     </nav>
                   </div>
-
                   <div class="flex justify-center">
                     <button
                       onClick={onClick}
@@ -123,17 +133,17 @@ const PlanesDetails = () => {
               </div>
               <div class="p-4 lg:w-1/3">
                 <div class="h-full  bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative bg-gray-950">
-                  <h1 class="tracking-widest text-xs title-font font-medium text-gray-100 mb-1 ">
-                    Tipo de planes{" "}
-                  </h1>
                   <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-100 mb-3">
-                    Pro-Plan Inicial
+                    PLAN INICIAL
                   </h1>
-                  <p class="leading-relaxed mb-3">Buenas.</p>
 
-                  <div class="  p-4 lg:w-1/2 sm:w-1/2 ">
+                  <div class="  p-8 ">
                     <h2 class="font-medium title-font tracking-widest text-gray-100 mb-4 text-sm text-center sm:text-left">
-                      Qué contiene
+                      $15 "Mensual"
+                    </h2>
+                    <hr />
+                    <h2 class="font-medium title-font tracking-widest text-gray-100 mb-4 text-sm text-center sm:text-left">
+                      ¿Qué contiene?
                     </h2>
                     <nav class="flex flex-col sm:items-start sm:text-left text-center items-center -mb-1 space-y-2.5">
                       <a>
@@ -150,7 +160,7 @@ const PlanesDetails = () => {
                             <path d="M20 6L9 17l-5-5"></path>
                           </svg>
                         </span>
-                        First Link
+                        Estimula la coordinación y el equilibrio
                       </a>
                       <a>
                         <span class="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
@@ -166,7 +176,7 @@ const PlanesDetails = () => {
                             <path d="M20 6L9 17l-5-5"></path>
                           </svg>
                         </span>
-                        Second Link
+                        Fomenta una alimentación saludable y socialización
                       </a>
                       <a>
                         <span class="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
@@ -182,39 +192,7 @@ const PlanesDetails = () => {
                             <path d="M20 6L9 17l-5-5"></path>
                           </svg>
                         </span>
-                        Third Link
-                      </a>
-                      <a>
-                        <span class="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
-                          <svg
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="3"
-                            class="w-3 h-3"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M20 6L9 17l-5-5"></path>
-                          </svg>
-                        </span>
-                        Fourth Link
-                      </a>
-                      <a>
-                        <span class="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
-                          <svg
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="3"
-                            class="w-3 h-3"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M20 6L9 17l-5-5"></path>
-                          </svg>
-                        </span>
-                        Fifth Link
+                        Programa en la parte de relajación de los residentes, para una mejor tranquilidad y estilo de vida
                       </a>
                     </nav>
                   </div>
@@ -274,17 +252,17 @@ const PlanesDetails = () => {
 
               <div class="p-4 lg:w-1/3">
                 <div class="h-full bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative bg-blue-500">
-                  <h1 class="tracking-widest text-xs title-font font-medium text-gray-100 mb-1 ">
-                    Tipo de planes{" "}
-                  </h1>
                   <h1 class="title-font sm:text-2xl text-xl font-medium text-gray-100 mb-3">
-                    Plan Inicial-Bienestar Esencial
+                    PLAN INICIAL BIENESTAR ESCENCIAL
                   </h1>
-                  <p class="leading-relaxed mb-3">Buenas.</p>
 
-                  <div class="  p-4 lg:w-1/2 sm:w-1/2 ">
+                  <div class="  p-8 ">
                     <h2 class="font-medium title-font tracking-widest text-gray-100 mb-4 text-sm text-center sm:text-left">
-                      Qué contiene
+                      $20 "Mensual"
+                    </h2>
+                    <hr />
+                    <h2 class="font-medium title-font tracking-widest text-gray-100 mb-4 text-sm text-center sm:text-left">
+                      ¿Qué contiene?
                     </h2>
                     <nav class="flex flex-col sm:items-start sm:text-left text-center items-center -mb-1 space-y-2.5">
                       <a>
@@ -301,7 +279,7 @@ const PlanesDetails = () => {
                             <path d="M20 6L9 17l-5-5"></path>
                           </svg>
                         </span>
-                        First Link
+                        Fortalece los músculos y las articulaciones
                       </a>
                       <a>
                         <span class="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
@@ -317,7 +295,7 @@ const PlanesDetails = () => {
                             <path d="M20 6L9 17l-5-5"></path>
                           </svg>
                         </span>
-                        Second Link
+                        Mejora la resistencia cardiovascular
                       </a>
                       <a>
                         <span class="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
@@ -333,40 +311,9 @@ const PlanesDetails = () => {
                             <path d="M20 6L9 17l-5-5"></path>
                           </svg>
                         </span>
-                        Third Link
+                        Estimula la creatividad y el contacto con la naturaleza
                       </a>
-                      <a>
-                        <span class="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
-                          <svg
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="3"
-                            class="w-3 h-3"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M20 6L9 17l-5-5"></path>
-                          </svg>
-                        </span>
-                        Fourth Link
-                      </a>
-                      <a>
-                        <span class="bg-indigo-100 text-indigo-500 w-4 h-4 mr-2 rounded-full inline-flex items-center justify-center">
-                          <svg
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="3"
-                            class="w-3 h-3"
-                            viewBox="0 0 24 24"
-                          >
-                            <path d="M20 6L9 17l-5-5"></path>
-                          </svg>
-                        </span>
-                        Fifth Link
-                      </a>
+
                     </nav>
                   </div>
 
@@ -431,4 +378,4 @@ const PlanesDetails = () => {
   );
 };
 
-export default PlanesDetails;
+export default PlanesPrincipal;

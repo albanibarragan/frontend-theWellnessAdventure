@@ -1,4 +1,4 @@
-/* Estilos generales del contenedor del formulario */
+
 .buy-form-container {
     width: 30%; 
     margin: 0 auto;
@@ -9,7 +9,6 @@
 
   }
   
-  /* Estilos para el título del formulario */
   .buy-form-title {
     text-align: center;
     margin-bottom: 20px;
@@ -19,9 +18,7 @@
     font-size: 3rem;
     font-weight: bold;
   }
-  
-  /* Estilos para el formulario en sí */
-  .buy-form {
+    .buy-form {
     display: flex;
     flex-direction: column;
   }

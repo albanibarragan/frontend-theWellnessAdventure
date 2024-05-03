@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "../../components/Footer/Footer.jsx";
 import Activities from "../../components/GalleryActivities/Activities.jsx";
-import PlanesDetails from "../../components/PlanesDetails/PlanesDetails.jsx";
+import PlanesPrincipal from "../../components/PlanesDetails/PlanesPrincipal.jsx";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import Header from "../../components/Header/Header.jsx";
 import img from "../../assets/fotos/caminar-adulto-mayor.jpg"
@@ -26,7 +26,7 @@ const Principal = () => {
         </div>
       </div>
       <Activities />
-      <PlanesDetails />
+      <PlanesPrincipal />
       <Footer />
     </div>
   );
