@@ -1,8 +1,37 @@
 import Logo from "../../../assets/fotos/logo.jpg";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import {ProtectPage} from "../../../AuthValidation";
+import {supabaseClient} from "../../../Supabase";
 
 const NavbarHome = () => {
+
+  const [user, SetUser] = useState(false)
+  const [activePlan, setActivePlan] = useState(false)
+
+  const getUserActivePlan = async(userId) => {
+    const { data, error } = await supabaseClient.from("Plan_users").select("id_plan").eq("id-user", userId).eq("Estatus", true) 
+    console.log(data)
+    if (error) {
+      console.log(error)
+      return
+    } else if (data.length > 0) setActivePlan(true)
+  }
+
+  useEffect(() => {
+
+    if (!user) {
+      ProtectPage().then(data => {
+        SetUser(data.user)
+      })
+    }
+    if (!activePlan) {
+      console.log("ah bueno y tentonces")
+      getUserActivePlan(user.id_user)
+    }
+
+  }, [activePlan, user])
+  
   return (
     <>
       <nav class="bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900">
@@ -62,7 +91,7 @@ const NavbarHome = () => {
                   PLANES
                 </Link>
               </li>
-              <li>
+              <li className={activePlan ? "hidden" : ""}>
                 <Link
                   to="/order"
                   href="#"

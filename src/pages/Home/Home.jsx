@@ -1,7 +1,7 @@
 import React from "react";
 import imagen from "../../assets/fotos/actividad6.png";
 import "./Home.css";
-import ContainerHome from "../../components/containerHome/containerHome.jsx";
+import ContainerHome from "../../components/containerHome/containerHome.jsx"; 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {ProtectPage} from "../../AuthValidation";
@@ -38,7 +38,6 @@ useEffect(()=>{
       SetUser(data.user)
     })
   } else if (!planConsulted){
-    console.log("shit")
     getUserActivePlan(user.id_user)
   }
 
