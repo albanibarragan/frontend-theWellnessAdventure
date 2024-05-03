@@ -240,7 +240,8 @@ const RegisterForm = () => {
                   maxLength: 100,
                 })}
               />
-            </div>      {errors.address && <p className="errors">Por favor ingrese una direccion</p>}
+            </div>
+            {errors.address && <p className="errors">Por favor ingrese una direccion</p>}
           </div>
 
           <div className="input-box-register">
@@ -321,7 +322,7 @@ const RegisterForm = () => {
                 placeholder="Ingrese su informacion medica de salud actual"
               />
               {errors.salud?.type === "required" && (
-                <p className="errors">El campo de informacion de salud es obligatorio. Por favor, introduzca su informacionmedica .</p>
+                <p className="errors">El campo de informacion de salud es obligatorio. Por favor, introduzca su informacion medica .</p>
               )}
               {errors.salud?.type === "maxLength" && (
                 <p className="errors">
