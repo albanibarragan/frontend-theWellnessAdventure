@@ -35,24 +35,20 @@ setUser(data.user)
 
 
 const compraPlan= async()=>{
-  const{error}=await supabaseClient.from('Plan_users').insert({"id-user":user.id_user, "id_plan":planId})
+  const{error}=await supabaseClient.from('Plan_users').insert({"id-user":user.id_user, "id_plan":planId, "Estatus": true})
 if(error){
   console.log(error);
   return
 }
 localStorage.removeItem("plan")
-navigate("/home")
+window.location.href = "/home"
 }
 
 
   const onSubmit = (values) => {
-    console.log(values);
     if (isValid) {
       dispatch({ type: "SET_PAYMENT_DATA", data: values });
-       console.log(user)
-compraPlan();
-    
-    
+       compraPlan();
     }
   };
   const [paymentMethod, setPaymentMethod] = useState("");
