@@ -104,12 +104,6 @@ const FormLogin = () => {
             </div>
           )}
           <div className="submit-container-login">
-            <div className="iniciarsesion-google">
-              <GoogleOAuthProvider clientId="YOUR_CLIENT_ID">
-                {" "}
-                <GoogleLoginComponent />
-              </GoogleOAuthProvider>
-            </div>
             <button
               className="button-registrarse"
               target="_blank"
