@@ -26,7 +26,7 @@ function Cancel() {
         </div>
            
         <div className='buttons-editProfile'>
-                    <button className="button-cambios" type='submit'>Mofificar información</button>
+                    <button className="button-cambios" type='submit'>Cancelar plan</button>
                     </div>
           </form>
             

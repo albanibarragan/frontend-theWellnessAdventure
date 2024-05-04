@@ -2,12 +2,15 @@ import { React, useState } from "react";
 import { useForm } from "react-hook-form";
 import './EditProfile.css'
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const cancelar = () => {
-    navigate("/cancelplan");
-  };
 
 const EditProfile = () => {
+    const navigate= useNavigate();
+    const cancelar = () => {
+        navigate("/adios");
+      };
+    
     const {
         register,
         formState: { errors },
