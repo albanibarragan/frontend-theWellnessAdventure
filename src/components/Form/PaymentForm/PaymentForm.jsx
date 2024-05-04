@@ -3,52 +3,66 @@ import { useForm } from "react-hook-form";
 import "./PaymentForm.css";
 import { useRegFormContext } from "../../../providers/RegFormProvider.jsx";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import {ProtectPage} from "../../../AuthValidation.js"
+import { ProtectPage } from "../../../AuthValidation.js"
 import { supabaseClient } from "../../../Supabase.js";
+import CardPaymentDetails from "../../Card/CardForm/CardPaymentDetails.jsx";
+
 const PaymentForm = () => {
   const [state, dispatch] = useRegFormContext();
   const navigate = useNavigate();
   const planId = localStorage.getItem("plan")
 
-
- const [user, setUser]=useState(false)
-  useEffect(()=>{
+  const [purchaseDetails, setPurchaseDetails] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [user, setUser] = useState(false)
+  useEffect(() => {
     if (!planId) {
       navigate("/order")
-      
+
     }
 
- ProtectPage().then(data =>{
-  if(!data.exist){
-    navigate("/login")
-  }if(!user){
-setUser(data.user)
+    ProtectPage().then(data => {
+      if (!data.exist) {
+        navigate("/login")
+      } if (!user) {
+        setUser(data.user)
 
-  }
- })
+      }
+    })
   }, [])
+
+
+
   const {
     register,
     formState: { errors, isValid },
     handleSubmit,
   } = useForm();
 
+  const compraPlan = async () => {
+    const { error } = await supabaseClient.from('Plan_users').insert({ "id-user": user.id_user, "id_plan": planId })
+    if (error) {
+      console.log(error);
+      return
+    }
+    localStorage.removeItem("plan")
 
-const compraPlan= async()=>{
-  const{error}=await supabaseClient.from('Plan_users').insert({"id-user":user.id_user, "id_plan":planId, "Estatus": true})
-if(error){
-  console.log(error);
-  return
-}
-localStorage.removeItem("plan")
-window.location.href = "/home"
-}
+    const purchaseDetails = {
+      selectedPlan: planId,
+      purchaseDate: new Date().toLocaleDateString(),
+      nombre: user?.Nombre,
+      paymentMethod: paymentMethod,
+    };
+    setPurchaseDetails(purchaseDetails);
+    setShowModal(true);
+  }
 
 
   const onSubmit = (values) => {
     if (isValid) {
       dispatch({ type: "SET_PAYMENT_DATA", data: values });
-       compraPlan();
+      console.log(user)
+      compraPlan();
     }
   };
   const [paymentMethod, setPaymentMethod] = useState("");
@@ -60,19 +74,6 @@ window.location.href = "/home"
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="payment-form">
         <div className="payment-inputs">
-          <div className="payment-input">
-            <label className="payment-label">Nombre completo</label>
-            <input
-              type="text"
-              {...register("nombre", {
-                required: true,
-                maxLength: 100,
-                pattern: /^[a-zA-ZÀ-ÿ\s]+$/,
-              })}
-              placeholder="Ingrese su nombre"
-            />
-            {errors.nombre && <p>Por favor ingrese un nombre válido.</p>}
-          </div>
           <div className="payment-input">
             <label className="payment-label">Correo</label>
             <input
@@ -154,6 +155,12 @@ window.location.href = "/home"
         </div>
         <input type="submit" className="button-payment" value="Enviar" />
       </form>
+      {showModal && purchaseDetails && (
+        <CardPaymentDetails
+          purchaseDetails={purchaseDetails}
+          onClose={() => setShowModal(false)}
+        />
+      )}
     </div>
   );
 };

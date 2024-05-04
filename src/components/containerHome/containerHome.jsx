@@ -1,10 +1,14 @@
 import React from "react";
-import Navbarhome from "../../components/Navbar/NavbarHome/NavbarHome.jsx"
+import NavbarHome from "../../components/Navbar/NavbarHome/NavbarHome.jsx"
+
 
 const containerHome = ({ children }) => {
   return (
     <div>
-     <Navbarhome/>
+      <div className="nav-bar-home">
+        <NavbarHome />
+      </div>
+
       {children}
     </div>
   );

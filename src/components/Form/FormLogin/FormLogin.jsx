@@ -57,7 +57,7 @@ const FormLogin = () => {
       </div>
       <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="login-inputs">
-          <div className="input-box">
+          <div className="input-box-login ">
             <label className="login-label">Correo</label>
             <div className="login-container-img-input">
               <img src={email_icon} alt="" />
@@ -77,7 +77,7 @@ const FormLogin = () => {
             {errors.email && <p className="errors">Por favor verifica el email</p>}
           </div>
 
-          <div className="input-box">
+          <div className="input-box-login ">
             <label className="login-label">contraseña</label>
             <div className="login-container-img-input">
               <img src={password_icon} alt="" />
@@ -85,16 +85,23 @@ const FormLogin = () => {
                 className="login-input"
                 id="password"
                 name="password"
-                required
                 type="password"
                 placeholder="Contraseña"
                 {...register("password", {
                   required: true,
-                  minLength: 5,
                   pattern: /^[a-zA-Z0-9!@#$%^&*]+$/,
                 })}
               />
-              {errors.password && <p className="errors">Por favor verifica la contraseña</p>}
+              {errors.password && (
+                <p className="errors">
+                  {errors.password.type === "required" && (
+                    "La contraseña es obligatoria. Por favor, introduce una contraseña."
+                  )}
+                  {errors.password.type === "pattern" && (
+                    "La contraseña es Incorrecta."
+                  )}
+                </p>
+              )}
             </div>
           </div>
           {action === "Sign Up" ? (

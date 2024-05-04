@@ -23,7 +23,6 @@ position: fixed;
     padding: 20px;
   }
   
-  /* Title and Description Card */
   
   .title-description-card {
     margin-bottom: 2rem;
@@ -38,8 +37,8 @@ position: fixed;
   }
   
   .description-plan-card {
-    font-size: 20px; /* Smaller text for description */
-    line-height: 1.5; /* Improve readability with line spacing */
+    font-size: 20px; 
+    line-height: 1.5; 
     color: #666;
   }
     

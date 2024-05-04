@@ -6,12 +6,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {ProtectPage} from "../../AuthValidation";
 import {supabaseClient} from "../../Supabase";
+import { ProtectPage } from "../../AuthValidation";
 const Home = () => {
-  const userName = "Test User";
-  const hasActivePlan = true;
-  const planName = "Plan Básico";
-  const startDate = "2024-01-01";
-  const endDate = "2024-12-31";
   const navigate = useNavigate();
   const [user,SetUser] = useState(false)
   const [activePlan, setActivePlan] = useState()
@@ -26,8 +22,7 @@ const Home = () => {
 
     setPlanConsulted(true)
   }
-
-useEffect(()=>{
+  useEffect(() => {
 
   if(user === false) {
     ProtectPage().then(data => {
@@ -42,7 +37,6 @@ useEffect(()=>{
   }
 
 },[user, activePlan])
-  
 
   return (
     <div className="pages-home">
