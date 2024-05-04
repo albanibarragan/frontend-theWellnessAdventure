@@ -6,10 +6,10 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ProtectPage } from "../../AuthValidation";
 const Home = () => {
-  const hasActivePlan = true;
+  const hasActivePlan = false;
   const planName = "Plan Básico";
   const startDate = "2024-01-01";
-  const endDate = "2024-12-31";
+  const endDate = "2024-02-01";
   const navigate = useNavigate();
   const [user, SetUser] = useState(false)
 
