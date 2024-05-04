@@ -48,7 +48,7 @@ const NavbarHome = () => {
             href="https://flowbite.com"
             class="flex items-center space-x-3 rtl:space-x-reverse"
           >
-            <img src={Logo} alt="logo" class="w-85 h-20 rounded-lg" />
+            <img src={Logo} alt="logo" class="w-85 h-21 rounded-lg" />
           </Link>
           <button
             data-collapse-toggle="mega-menu-full"
