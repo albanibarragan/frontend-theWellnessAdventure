@@ -3,10 +3,42 @@ import { useForm } from "react-hook-form";
 import './EditProfile.css'
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { ProtectPage } from "../../../AuthValidation";
+import {supabaseClient} from "../../../Supabase";
 
 
 const EditProfile = () => {
+
+
     const navigate= useNavigate();
+    const [user, setUser] = useState(false)
+    const [values, setValues] = useState({})
+
+    useEffect(()=>{
+      if (!user) {
+        ProtectPage().then(data => {
+          if (!data.exist) {
+            navigate("/login")
+            return
+          }
+          setUser(data.user)
+        })
+      } else {
+        setValues({
+          nombre: user.Nombre,
+          Cedula: user.Cedula,
+          address: user.Direccion,
+          email: user.Correo,
+          phone: user.Telefono,
+          phoneEmergencia: user.telefono_emergencia,
+          salud: user.Necesidades_Medicas,
+          dateOfBirth: user.fecha_nacimiento
+        })
+      } 
+      
+      console.log(user)
+    }, [user])
+
     const cancelar = () => {
         navigate("/adios");
       };
@@ -16,7 +48,19 @@ const EditProfile = () => {
         formState: { errors },
         handleSubmit,
         reset,
-    } = useForm();
+    } = useForm({
+      defaultValues: {
+        nombre: "",
+        Cedula: "",
+        address: "",
+        email: "",
+        phone: "",
+        phoneEmergencia: "",
+        salud: "",
+        dateOfBirth: "",
+      },
+      values
+    });
     const handleClear = () => {
         reset({
             nombre: '',
@@ -32,8 +76,24 @@ const EditProfile = () => {
 
         });
     };
-    const onSubmit = (values) => {
-        console.log("values")
+    const onSubmit = async (values) => {
+
+      const { error } = await supabaseClient.from("users").update({
+        Nombre: values.nombre,
+        Cedula: values.cedula,
+        Direccion: values.address,
+        Telefono: values.phone,
+        telefono_emergencia: values.phoneEmergencia,
+        Necesidades_Medicas: values.salud,
+        fecha_nacimiento: values.dateOfBirth,
+      }).eq("id_user", user.id_user)
+      
+      if (error) {
+        console.log(error)
+        return
+      }
+      
+      navigate("/home")
     };
     return (
         <div className="card-form-profil bg-white border-gray-500 dark:border-gray-200 dark:bg-gray-700">
@@ -52,7 +112,8 @@ const EditProfile = () => {
                                     required: true,
                                     maxLength: 100,
                                     pattern: /^[a-zA-ZÀ-ÿ\s]+$/,
-                                })} />
+                                })} 
+                             />
                         </div>
                         {errors.nombre && <p>Por favor ingrese un nombre válido.</p>}
                         <div className="input-box">
@@ -89,11 +150,13 @@ const EditProfile = () => {
                                 id="email"
                                 name="email"
                                 type="email"
-                                placeholder="Correo Electronico"
+                                disabled="true"
                                 {...register("email", {
                                     pattern:
                                         /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
                                 })}
+                                placeholder="Correo Electronico"
+                                value={user.Correo}
                             />
                         </div>
                         {errors.email && <p>Por favor verifica el email</p>}
@@ -157,10 +220,10 @@ const EditProfile = () => {
                         <div className="input-box">
                             <label htmlFor="dateBirthday" className="edit-label">Fecha de Nacimiento</label>
                             <input
-                                {...register('dateOfBirth')}
                                 id="dateBirthday"
-                                name="dateBirthday"
+                                name="dateOfBirthday"
                                 type="date"
+                                {...register('dateOfBirth')}
                             />
                         </div>
 
@@ -171,7 +234,7 @@ const EditProfile = () => {
                 </div >
 
                 <div className='buttons-editProfile'>
-                    <button className="button-cambios" type='submit'>Mofificar información</button>
+                    <button className="button-cambios" type='submit'>Modificar información</button>
 
                     <button className="button-limpiar" onClick={handleClear} type='reset'>Limpiar</button>
                     

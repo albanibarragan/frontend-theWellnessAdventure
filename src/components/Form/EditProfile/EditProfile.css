@@ -96,10 +96,12 @@
 }
 
 .buttons-editProfile{
-    width: 50%;
-    justify-content: space-between;
+    width: 100%;
+    justify-content: center;
+    justify-items: center;
     display: flex;
     align-items: center;
+    gap: 30px;
 }
 .buttons-editProfile button{
     background-color: #007954;
