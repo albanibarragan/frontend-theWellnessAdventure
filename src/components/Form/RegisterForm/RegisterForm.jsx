@@ -13,7 +13,6 @@ import "./RegisterForm.css";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { supabaseClient } from "../../../Supabase.js";
-import { data } from "autoprefixer";
 const RegisterForm = () => {
   const [action, setAction] = useState("BIENVENIDO A THE WELLNESS ADVENTURE");
   const {
@@ -41,22 +40,23 @@ const RegisterForm = () => {
     console.log("Server Response: " + data);
     const new_user = {
       id_user: data.user.id,
-      Cedula: dataUser.Cedula,
-      Nombre: dataUser.Nombre,
+      Cedula: dataUser.cedula,
+      Nombre: dataUser.nombre + " " + dataUser.apellido,
       Correo: dataUser.email,
-      Direccion: dataUser.direccion,
-      Necesidades_Medicas: dataUser.salud
-
+      Direccion: dataUser.address,
+      Telefono: dataUser.phone,
+      telefono_emergencia: dataUser.phoneEmergencia,
+      Necesidades_Medicas: dataUser.salud,
+      fecha_nacimiento: dataUser.dateOfBirth
+    
     }
-    console.log("ID:" + data.user.id)
-    console.log("RequestBody: " + new_user)
     const { error_al_crear } = await supabaseClient.from('users')
       .insert(new_user)
     if (error_al_crear) {
       console.log(error_al_crear)
       return
     }
-
+    
     navigate("/login")
   };
 
@@ -213,14 +213,18 @@ const RegisterForm = () => {
             {errors.cedula && <span className="error">Verifique la cédula ingresada</span>}
           </div>
           <div className="input-box-register">
-            <label htmlFor="dateBirthday" className="register-label">Fecha de Nacimiento</label>
-            <div className="register-container-img-input">
-              <input
-                className="register-input"
-                id="dateBirthday"
-                name="dateBirthday"
-                type="date"
-              />
+            <div className="input-box">
+              <label htmlFor="dateBirthday" className="register-label">Fecha de Nacimiento</label>
+              <div className="register-container-img-input">
+                <input
+                  id="dateBirthday"
+                  name="dateBirthday"
+                  type="date"
+                  {...register('dateOfBirth', {
+                    required: true,
+                  })}
+                />
+              </div>
             </div>
           </div>
           <div className="input-box-register">
@@ -243,7 +247,6 @@ const RegisterForm = () => {
             </div>
             {errors.address && <p className="errors">Por favor ingrese una direccion</p>}
           </div>
-
           <div className="input-box-register">
             <label className="register-label">Contraseña</label>
             <div className="register-container-img-input">

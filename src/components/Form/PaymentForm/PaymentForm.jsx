@@ -39,9 +39,6 @@ const PaymentForm = () => {
     handleSubmit,
   } = useForm();
 
-
-
-
   const compraPlan = async () => {
     const { error } = await supabaseClient.from('Plan_users').insert({ "id-user": user.id_user, "id_plan": planId })
     if (error) {
@@ -62,7 +59,6 @@ const PaymentForm = () => {
 
 
   const onSubmit = (values) => {
-    console.log(values);
     if (isValid) {
       dispatch({ type: "SET_PAYMENT_DATA", data: values });
       console.log(user)

@@ -8,6 +8,7 @@ const CardDetails = ({ plan, onClose }) => {
                 <div className="title-description-card">
                     <h1 className="title-plans-card">{plan?.plan_id}</h1>
                     <p className="description-plan-card">{plan.Descripcion}</p>
+                    <p className="text-gray-500 text-sm mt-5">{plan?.Fecha_inicio} - {plan?.Fecha_fin}</p>
                 </div>
                 <div className="plan-info-card">
                     <p className="plan-cost-card">
