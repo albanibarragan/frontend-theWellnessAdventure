@@ -154,7 +154,7 @@ const RegisterForm = () => {
                 placeholder="Telefono (Principal)"
                 {...register('phone', {
                   required: true,
-                  pattern: /^\d{10}$/,
+                  pattern: /^\d{11}$/,
                 })}
               />
             </div>
@@ -180,7 +180,7 @@ const RegisterForm = () => {
                 placeholder="Telefono (De Emergencia)"
                 {...register('phoneEmergencia', {
                   required: true,
-                  pattern: /^\d{10}$/,
+                  pattern: /^\d{11}$/,
                 })}
               />
             </div>
@@ -349,14 +349,10 @@ const RegisterForm = () => {
               </a>
             </div>
           </div>
-          {action === "Register" ? (
-            <div></div>
-          ) : (
+          {action === "Register" ? (<div></div>) : (
             <div className="login-form-register">
               ¿Ya tienes una cuenta?
-              <a className="buttonLogin" onClick={onClick}>
-                Iniciar sesion
-              </a>
+              <a className="buttonLogin" onClick={onClick}>Iniciar sesion</a>
             </div>
           )}
           <div className="submit-container-register">

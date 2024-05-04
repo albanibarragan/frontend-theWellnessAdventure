@@ -96,7 +96,7 @@ const EditProfile = () => {
       navigate("/editprofile")
     };
     return (
-        <div className="card-form-profile bg-white border-gray-500 dark:border-gray-200 dark:bg-gray-700">
+        <div className="card-form-profile  w-full  bg-white border-gray-500 dark:border-gray-200 dark:bg-gray-700">
             <h2 className="title-editProfile">Perfil usuario</h2>
             <form className="profile-form" onSubmit={handleSubmit(onSubmit)}>
                 <div className="editProfile">
@@ -233,17 +233,18 @@ const EditProfile = () => {
                     </div>
                 </div >
 
-                <div className='buttons-editProfile'>
-                    <button className="button-cambios" type='submit'>Modificar información</button>
-
-                    <button className="button-limpiar" onClick={handleClear} type='reset'>Limpiar</button>
-                    
-                    <button className="button-eliminar-suscripcion"  onClick={cancelar} >Cancelar plan de retiro  </button>
-                </div>
+            
              
                     
            
             </form >
+            <div className='buttons-editProfile'>
+                    <button className="button-cambios" type='submit'>Modificar información</button>
+
+                    <button  className="button-limpiar" onClick={handleClear} type='reset'>Limpiar</button>
+                    
+                    <button className="button-eliminar-suscripcion"  onClick={cancelar} >Cancelar plan de retiro  </button>
+                </div>
         </div >
     )
 }
