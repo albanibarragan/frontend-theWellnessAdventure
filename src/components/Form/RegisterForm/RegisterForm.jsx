@@ -140,7 +140,7 @@ const RegisterForm = () => {
             </div>
 
           </div>
-          {errors.phone && <p>Por favor verifique el apellido</p>}
+          {errors.phone && <p>Por favor verifique el Telefono</p>}
           <div className="input-box-register">
             <label className="register-label">Teléfono(De Emergencia)</label>
             <div className="register-container-img-input">
@@ -156,6 +156,7 @@ const RegisterForm = () => {
               />
             </div>
           </div>
+          {errors.phoneEmergencia && <p>Por favor verifique el Telefono</p>}
           <div className="input-box-register">
             <label className="register-label">Cédula</label>
             <div className="register-container-img-input">
@@ -224,10 +225,11 @@ const RegisterForm = () => {
                 placeholder="Contraseña"
                 {...register("password", {
                   required: true,
-                  pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/,
+                  pattern: /^[a-zA-Z0-9!@#$%^&*]+$/,
                 })}
               />
             </div>
+            {errors.password && <p>Por favor verifique la contraseña</p>}
           </div>
           <div className="input-box-register">
             <label className="register-label">Confirmar su contraseña</label>
@@ -244,13 +246,13 @@ const RegisterForm = () => {
                 required
                 type="password"
                 placeholder="Confirmar contraseña"
-                {...register("password", {
+                {...register("passwordC", {
                   required: true,
-                  pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/,
+                  pattern: /^[a-zA-Z0-9!@#$%^&*]+$/,
                 })}
               />
-              {errors.password && <p>Por davor verifica la contraseña</p>}
             </div>
+            {errors.passwordC && <p>Por favor verifique la contraseña</p>}
           </div>
           <div className="input-box-register">
             <label className="register-label">Información de salud</label>

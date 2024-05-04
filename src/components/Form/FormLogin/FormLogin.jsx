@@ -90,10 +90,11 @@ const FormLogin = () => {
                 placeholder="Contraseña"
                 {...register("password", {
                   required: true,
-                  pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/,
+                  minLength: 5,
+                  pattern: /^[a-zA-Z0-9!@#$%^&*]+$/,
                 })}
               />
-              {errors.password && <p className="errors">Por davor verifica la contraseña</p>}
+              {errors.password && <p className="errors">Por favor verifica la contraseña</p>}
             </div>
           </div>
           {action === "Sign Up" ? (
