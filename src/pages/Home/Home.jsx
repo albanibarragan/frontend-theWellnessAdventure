@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {ProtectPage} from "../../AuthValidation";
 import {supabaseClient} from "../../Supabase";
-import { ProtectPage } from "../../AuthValidation";
 const Home = () => {
   const navigate = useNavigate();
   const [user,SetUser] = useState(false)
