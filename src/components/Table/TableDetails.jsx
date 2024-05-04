@@ -55,11 +55,11 @@ const TableDetails = () => {
       <tbody>
       {planes.map((tablaData) => (
           <tr> 
-            <td>{tablaData.retreat_plan.Fecha_inicio}</td> 
-            <td>{tablaData.retreat_plan.Fecha_fin}</td> 
-            <td>{tablaData.retreat_plan.plan_id}</td> 
-            <td>{tablaData.retreat_plan.Descripcion}</td> 
-            <td>$ {tablaData.retreat_plan.Precio}</td> 
+            <td>{tablaData?.retreat_plan?.Fecha_inicio}</td> 
+            <td>{tablaData?.retreat_plan?.Fecha_fin}</td> 
+            <td>{tablaData?.retreat_plan?.plan_id}</td> 
+            <td>{tablaData?.retreat_plan?.Descripcion}</td> 
+            <td>$ {tablaData?.retreat_plan?.Precio}</td> 
             <td>{tablaData.Estatus ? "Activo" : "Inactivo"}</td>
           </tr> 
         ))}

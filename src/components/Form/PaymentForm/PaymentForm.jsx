@@ -18,17 +18,19 @@ const PaymentForm = () => {
   useEffect(() => {
     if (!planId) {
       navigate("/order")
+    }
+    if (!user) {
+
+      ProtectPage().then(data => {
+        if (!data.exist) {
+          navigate("/login")
+        } if (!user) {
+          setUser(data.user)
+
+        }
+      })
 
     }
-
-    ProtectPage().then(data => {
-      if (!data.exist) {
-        navigate("/login")
-      } if (!user) {
-        setUser(data.user)
-
-      }
-    })
   }, [])
 
 
@@ -40,7 +42,7 @@ const PaymentForm = () => {
   } = useForm();
 
   const compraPlan = async () => {
-    const { error } = await supabaseClient.from('Plan_users').insert({ "id-user": user.id_user, "id_plan": planId })
+    const { error } = await supabaseClient.from('Plan_users').insert({ "id-user": user.id_user, "id_plan": planId, "Estatus": true })
     if (error) {
       console.log(error);
       return
@@ -158,7 +160,10 @@ const PaymentForm = () => {
       {showModal && purchaseDetails && (
         <CardPaymentDetails
           purchaseDetails={purchaseDetails}
-          onClose={() => setShowModal(false)}
+        onClose={() => {
+          setShowModal(false)
+          window.location.href="/home"
+        }}
         />
       )}
     </div>
