@@ -93,18 +93,18 @@ const EditProfile = () => {
         return
       }
       
-      navigate("/home")
+      navigate("/editprofile")
     };
     return (
-        <div className="card-form-profil bg-white border-gray-500 dark:border-gray-200 dark:bg-gray-700">
-            <h2 className="title-editProfile">Editar Perfil</h2>
+        <div className="card-form-profile bg-white border-gray-500 dark:border-gray-200 dark:bg-gray-700">
+            <h2 className="title-editProfile">Perfil usuario</h2>
             <form className="profile-form" onSubmit={handleSubmit(onSubmit)}>
                 <div className="editProfile">
                     <div className="editProfile-inputs">
 
                         <div className="input-box">
-                            <label htmlFor="firstName" className="profile-label">Nombre</label>
-                            <input
+                            <label htmlFor="firstName" className="profil-label"> Nombre</label>
+                            <input className="profile-input"
                                 id="firstName"
                                 name="firstName"
                                 placeholder="Nombre"
@@ -117,8 +117,8 @@ const EditProfile = () => {
                         </div>
                         {errors.nombre && <p>Por favor ingrese un nombre válido.</p>}
                         <div className="input-box">
-                            <label className="profile-label">Cédula</label>
-                            <input
+                            <label htmlFor="cedula" className="profil-label">Cédula</label>
+                            <input className="profile-input"
 
                                 type="text"
                                 placeholder="cedula"
@@ -131,8 +131,8 @@ const EditProfile = () => {
                         </div>
                         {errors.cedula && <span className="error">Verifique la cédula ingresada</span>}
                         <div className="input-box">
-                            <label htmlFor="address" className="profile-label">Dirección</label>
-                            <input
+                            <label htmlFor="address" className="profil-label">Dirección</label>
+                            <input className="profile-input"
                                 id="address"
                                 name="address"
                                 type="text"
@@ -144,9 +144,9 @@ const EditProfile = () => {
                         </div>
                         {errors.address && <p>Por favor verifique su Dirección</p>}
                         <div className="input-box">
-                            <label className="edit-label">Correo</label>
-                            <input
-                                className="login-input"
+                            <label className="profil-label">Correo</label>
+                            <input className="profile-input"
+                              
                                 id="email"
                                 name="email"
                                 type="email"
@@ -166,14 +166,14 @@ const EditProfile = () => {
 
                     <div className="editProfile-inputs">
 
-                        <div className="input-box">
-                            <label htmlFor="phone" className="profile-label">Teléfono</label>
-                            <input
+                    <div className="input-box">
+                            <label htmlFor="phone" className="profil-label">Teléfono</label>
+                            <input className="profile-input"
                                 id="phone"
-                                name="phone"
+                                name="phoneEmergencia"
                                 type="number"
-                                placeholder="Telefono (Principal)"
-                                {...register('phone', {
+                                placeholder="Telefono (Emergencia)"
+                                {...register('phoneEmergencia', {
                                     required: true,
                                     pattern: /^\d{11}$/,
                                 })}
@@ -183,8 +183,8 @@ const EditProfile = () => {
 
                     
                         <div className="input-box">
-                            <label htmlFor="phone" className="profile-label">Teléfono (Emergencia)</label>
-                            <input
+                            <label htmlFor="phone" className="profil-label">Teléfono (Emergencia)</label>
+                            <input className="profile-input"
                                 id="phone"
                                 name="phoneEmergencia"
                                 type="number"
@@ -199,10 +199,10 @@ const EditProfile = () => {
 
 
                         <div className="input-box">
-                            <label className="profile-label">Información de salud</label>
+                            <label className="profil-label">Información de salud</label>
 
-                            <input
-                                className="register-input"
+                            <input 
+                                className="profile-input"
                                 type="text"
                                 {...register("salud", { maxLength: 1000, required: true })}
                                 placeholder="Ingrese su informacion de medica de salud actual"
@@ -218,8 +218,8 @@ const EditProfile = () => {
                             )}
                         </div>
                         <div className="input-box">
-                            <label htmlFor="dateBirthday" className="edit-label">Fecha de Nacimiento</label>
-                            <input
+                            <label htmlFor="dateBirthday" className="profil-label">Fecha de Nacimiento</label>
+                            <input className="profile-input"
                                 id="dateBirthday"
                                 name="dateOfBirthday"
                                 type="date"
