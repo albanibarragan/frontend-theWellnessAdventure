@@ -1,9 +1,10 @@
+
 .card-form-profil{
-    padding: 2rem; 
+    padding: 20px; 
     border-radius: 0.375rem; 
     border-width: 2px; 
    margin: auto;
-    width: 80%; 
+    width:80%; 
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }
@@ -17,7 +18,7 @@
 }
 
 .profile-form{
-    width: 100%;
+    width: 80%;
     flex-direction: column;
     display: flex;
     gap: 1rem;
@@ -97,12 +98,12 @@
 }
 
 .buttons-editProfile{
-    width: 100%;
+    width: 80%;
     justify-content: center;
     justify-items: center;
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
 }
 .buttons-editProfile button{
     background-color: #007954;
@@ -110,6 +111,6 @@
     border-radius: 5px;
     cursor: pointer;
     margin-top: auto; 
-    padding: 10px 50px;
+    padding: 5px;
     color: #FFF;
 }

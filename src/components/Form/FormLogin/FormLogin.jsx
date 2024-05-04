@@ -112,6 +112,14 @@ const FormLogin = () => {
             </div>
           )}
           <div className="submit-container-login">
+          <button
+              type="submit"
+              className={action === "Registrarse" ? "submit gray" : "submit"}
+
+            >
+              Iniciar Sesión
+            </button>
+            
             <button
               className="button-registrarse"
               target="_blank"
@@ -120,13 +128,7 @@ const FormLogin = () => {
             >
               Registrarse{" "}
             </button>
-            <button
-              type="submit"
-              className={action === "Registrarse" ? "submit gray" : "submit"}
-
-            >
-              Iniciar Sesión
-            </button>
+         
           </div>
         </div>
       </form>
