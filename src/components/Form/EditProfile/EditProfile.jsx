@@ -175,7 +175,7 @@ const EditProfile = () => {
                                 placeholder="Telefono (Principal)"
                                 {...register('phone', {
                                     required: true,
-                                    pattern: /^\d{10}$/,
+                                    pattern: /^\d{11}$/,
                                 })}
                             />
                         </div>
@@ -191,7 +191,7 @@ const EditProfile = () => {
                                 placeholder="Telefono (Emergencia)"
                                 {...register('phoneEmergencia', {
                                     required: true,
-                                    pattern: /^\d{10}$/,
+                                    pattern: /^\d{11}$/,
                                 })}
                             />
                         </div>

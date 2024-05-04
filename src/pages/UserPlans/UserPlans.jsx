@@ -10,7 +10,7 @@ const UserPlans = () => {
       <ContainerHome>
         <div className="userPlans-container">
           <h1 className="userPlans-title">
-            Tus Planes de Retiro de Bienestar {userName}
+            Tus Planes de Retiro de Bienestar {}
           </h1>{" "}
           <div className="user-table">
             <TableDetails />
